@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JS Virtual Logistics & Business Solutions (JSLV) provides affordable outsourcing services for SMEs in India, GCC, and international markets. Visit www.JSLV.in for bookkeeping, logistics, and business support.">
+    <title>JS Virtual Logistics & Business Solutions | Outsourcing Experts</title>
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <!-- Android Chrome theme color (orange) -->
+    <meta name="theme-color" content="#FF6F00">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a3a6c;
+            --secondary: #2c5aa0;
+            --accent: #0d8bd9;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --bg: var(--white);
+            --text: var(--dark);
+            --card-bg: var(--white);
+            /* Header now uses orange directly */
+        }
+        /* Dark Mode Variables */
+        .dark-mode {
+            --bg: #121212;
+            --text: #e0e0e0;
+            --card-bg: #1f1f1f;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+        h1, h2, h3, h4, h5 {
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: var(--accent);
+            color: var(--white);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+        .btn-outline:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+        section {
+            padding: 5rem 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        /* Header Styles - ORANGE & WHITE THEME */
+        header {
+            background-color: #FF6F00; /* Orange */
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-box {
+            background: var(--white);
+            color: #FF6F00 !important;
+            font-size: 1.6rem;
+            font-weight: 700;
+            padding: 12px 16px;
+            border-radius: 6px;
+            box-shadow: 
+                4px 4px 8px rgba(0, 0, 0, 0.1),
+                -2px -2px 6px rgba(255, 255, 255, 0.3);
+            transform: perspective(500px) rotateX(5deg) rotateY(5deg);
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: 'Poppins', sans-serif;
+        }
+        .logo-box:hover {
+            transform: perspective(500px) rotateX(8deg) rotateY(8deg) scale(1.05);
+            box-shadow: 
+                6px 6px 12px rgba(0, 0, 0, 0.15),
+                -4px -4px 10px rgba(255, 255, 255, 0.4);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+        }
+        .logo-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--white);
+            white-space: nowrap;
+            font-family: 'Poppins', sans-serif;
+        }
+        .logo-tagline {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+            white-space: nowrap;
+            font-style: italic;
+            margin-top: 4px;
+        }
+        @media (max-width: 768px) {
+            .logo-text,
+            .logo-tagline {
+                display: none;
+            }
+            .logo-box {
+                font-size: 1.4rem;
+                padding: 10px 14px;
+            }
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        .nav-links a:hover {
+            color: var(--white);
+            opacity: 0.9;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--white);
+            transition: var(--transition);
+        }
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--white);
+        }
+        .dark-mode-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--white);
+            margin-right: 1rem;
+            transition: var(--transition);
+        }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(26, 58, 108, 0.9) 0%, rgba(44, 90, 160, 0.85) 100%), url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+            padding-top: 80px;
+        }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        .about-text {
+            flex: 1;
+        }
+        .about-text h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(13, 139, 217, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--accent);
+            font-size: 2rem;
+        }
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        .service-list {
+            list-style: none;
+            text-align: left;
+        }
+        .service-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 25px;
+        }
+        .service-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        /* Why Choose Us */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .feature-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            border-radius: 10px;
+            background: var(--light);
+            transition: var(--transition);
+        }
+        .dark-mode .feature-card {
+            background: #2a2a2a;
+        }
+        .feature-card:hover {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            transform: translateY(-5px);
+        }
+        .dark-mode .feature-card:hover {
+            background: #333;
+        }
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--white);
+            font-size: 1.8rem;
+        }
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--light);
+            position: relative;
+            overflow: hidden;
+        }
+        .dark-mode .testimonials {
+            background-color: #1a1a1a;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .testimonial-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: '"';
+            font-size: 5rem;
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            color: rgba(13, 139, 217, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        .client-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .client-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .client-details strong {
+            display: block;
+            color: var(--primary);
+        }
+        .client-details span {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .contact-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        .dark-mode .contact-card {
+            background: #2a2a2a;
+        }
+        .contact-card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        .contact-details {
+            list-style: none;
+        }
+        .contact-details li {
+            display: flex;
+            margin-bottom: 1.2rem;
+            align-items: flex-start;
+        }
+        .contact-details i {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            min-width: 24px;
+            margin-top: 4px;
+        }
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        .dark-mode .contact-form label {
+            color: #ddd;
+        }
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            background: var(--bg);
+            color: var(--text);
+            border-radius: 4px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+        }
+        .dark-mode .contact-form input,
+        .dark-mode .contact-form select,
+        .dark-mode .contact-form textarea {
+            border-color: #444;
+            color: #ddd;
+        }
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 3rem 0 1.5rem;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .footer-column h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+        }
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        /* WhatsApp Floating Button */
+        .whatsapp-float-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+            z-index: 999;
+        }
+        .whatsapp-float {
+            width: 60px;
+            height: 60px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            animation: pulse 1.5s infinite;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            animation: none;
+        }
+        .whatsapp-float i {
+            margin-top: 4px;
+        }
+        .whatsapp-tooltip {
+            background-color: var(--dark);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .whatsapp-float-container:hover .whatsapp-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+        }
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        @media (max-width: 480px) {
+            .whatsapp-float-container {
+                bottom: 20px;
+                right: 20px;
+                gap: 8px;
+            }
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.7rem;
+            }
+            .whatsapp-tooltip {
+                font-size: 0.85rem;
+                padding: 6px 10px;
+            }
+        }
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .about-content {
+                flex-direction: column;
+            }
+        }
+        @media (max-width: 768px) {
+            .mobile-toggle {
+                display: block;
+            }
+            .dark-mode-toggle {
+                order: -1;
+            }
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                flex-direction: column;
+                background: #FF6F00;
+                width: 100%;
+                text-align: center;
+                padding: 2rem 0;
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            .hero p {
+                font-size: 1.1rem;
+            }
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            section {
+                padding: 3rem 0;
+            }
+        }
+        @media (max-width: 576px) {
+            .hero {
+                padding-top: 100px;
+            }
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <div class="logo-box">JSLV</div>
+                    <div>
+                        <div class="logo-text">JS Virtual Logistics And Business Solutions</div>
+                        <div class="logo-tagline">Your Business Friend — Online, Anytime.</div>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center;">
+                    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle Dark Mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <div class="mobile-toggle" id="mobileToggle" aria-label="Navigation Menu">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#why">Why Choose Us</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Streamline Your Business with Expert Outsourcing</h1>
+                <p>Affordable and reliable outsourcing solutions for small and medium businesses in India, GCC, and international markets.</p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn">Get a Free Consultation</a>
+                    <a href="#services" class="btn btn-outline">Our Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Us</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Empowering Businesses Through Outsourcing</h3>
+                    <p>JS Virtual Logistics & Business Solutions (JSLV) was founded with a mission to provide seamless remote support to small and medium-sized businesses. We understand the challenges of managing operations while trying to grow your business.</p>
+                    <p>Based in India with operations across GCC and international markets, we offer specialized outsourcing services that help businesses reduce overhead costs, streamline operations, and focus on their core competencies.</p>
+                    <p>Our team of experienced professionals is dedicated to delivering reliable, efficient, and cost-effective solutions tailored to your specific business needs.</p>
+                    <a href="#contact" class="btn">Get Started Today</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Business Outsourcing">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" style="background-color: var(--light);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Bookkeeping & Accounting</h3>
+                    <ul class="service-list">
+                        <li>Bookkeeping up to finalization</li>
+                        <li>VAT preparation and submission</li>
+                        <li>Financial reporting</li>
+                        <li>Accounts payable/receivable management</li>
+                        <li>Payroll processing</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h3>Logistics Coordination</h3>
+                    <ul class="service-list">
+                        <li>Arranging shipment bookings (sea & air freight)</li>
+                        <li>Preparing international shipping documentation</li>
+                        <li>Coordinating with shipping lines and airlines</li>
+                        <li>Arranging transportation (last-mile & inland)</li>
+                        <li>Warehouse coordination & stock management</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Customer Service & Admin Support</h3>
+                    <ul class="service-list">
+                        <li>24/7 customer support</li>
+                        <li>Email and chat management</li>
+                        <li>Data entry and processing</li>
+                        <li>Scheduling and calendar management</li>
+                        <li>Document preparation and management</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="why">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Us</h2>
+            </div>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3>Cost Savings</h3>
+                    <p>Reduce operational costs by up to 60% compared to in-house teams while maintaining high-quality service.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <h3>Regional Expertise</h3>
+                    <p>Specialized knowledge of business practices in India, GCC, and international markets.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Reliability</h3>
+                    <p>Consistent, dependable service with strict quality control and data security protocols.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>Multilingual Support</h3>
+                    <p>Fluent in English, Hindi, Malayalam, Tamil, and Arabic to serve diverse client needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client Testimonials</h2>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">JSLV has been instrumental in managing our bookkeeping and VAT filings in Dubai. Their accuracy and responsiveness saved us hours every month.</p>
+                    <div class="client-info">
+                        <div class="client-avatar">R</div>
+                        <div class="client-details">
+                            <strong>Rajesh Kumar</strong>
+                            <span>Trading Co., Dubai</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Outsourcing logistics coordination to JSLV allowed us to scale operations without hiring full-time staff. Highly professional and cost-effective!</p>
+                    <div class="client-info">
+                        <div class="client-avatar">S</div>
+                        <div class="client-details">
+                            <strong>Sana Malik</strong>
+                            <span>E-commerce Startup, Kerala</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Their multilingual admin support team handles our customer inquiries flawlessly. We’ve seen a huge improvement in response time and satisfaction.</p>
+                    <div class="client-info">
+                        <div class="client-avatar">A</div>
+                        <div class="client-details">
+                            <strong>Ali Raza</strong>
+                            <span>Service Provider, Riyadh</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background-color: var(--light);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <h3>India Office</h3>
+                        <ul class="contact-details">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>JS Virtual Logistics Solutions, Mattool, Kannur, Kerala, India</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <span>+91 8301013842</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <span>jamshid@jslv.in</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="contact-card">
+                        <h3>UAE Office</h3>
+                        <ul class="contact-details">
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Nexa Global Accounting Service<br>Office no:117A, Auto center<br>A-Block, Port Saeed, Deira<br>Dubai. P.O.Box:48644</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-phone"></i>
+                                <span>+971 58 912 2510</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <span>support@globalacsuae.com</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="contact-card">
+                        <h3>Connect With Us</h3>
+                        <ul class="contact-details">
+                            <li>
+                                <i class="fab fa-whatsapp"></i>
+                                <span>WhatsApp: +91 8301013842</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-envelope"></i>
+                                <span>Email: jamshid@jslv.in</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-globe"></i>
+                                <span>www.JSLV.in</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm" action="https://formspree.io/f/xqaylzog" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Required</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select a service</option>
+                                <option value="bookkeeping">Bookkeeping & Accounting</option>
+                                <option value="logistics">Logistics Coordination</option>
+                                <option value="customer">Customer Service & Admin Support</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>JS Virtual Logistics</h3>
+                    <p>Providing affordable and reliable outsourcing services to help small and medium businesses reduce overhead, streamline operations, and focus on growth.</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/jslv" target="_blank" rel="noopener noreferrer" title="Follow us on Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/jslv" target="_blank" rel="noopener noreferrer" title="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://linkedin.com/company/jslv" target="_blank" rel="noopener noreferrer" title="Follow us on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://instagram.com/jslv" target="_blank" rel="noopener noreferrer" title="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#why">Why Choose Us</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#services">Bookkeeping & Accounting</a></li>
+                        <li><a href="#services">Logistics Coordination</a></li>
+                        <li><a href="#services">Customer Service & Admin Support</a></li>
+                        <li><a href="#contact">Free Consultation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> jamshid@jslv.in</li>
+                        <li><i class="fas fa-phone"></i> +91 8301013842</li>
+                        <li><i class="fas fa-map-marker-alt"></i> India • GCC • International</li>
+                        <li><i class="fas fa-globe"></i> www.JSLV.in</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="year"></span> JS Virtual Logistics & Business Solutions. All Rights Reserved. | www.JSLV.in</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-float-container">
+        <a 
+            href="https://wa.me/918301013842?text=Hi%20JSLV,%20I%20would%20like%20to%20know%20more%20about%20your%20outsourcing%20services." 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="whatsapp-float"
+            aria-label="Chat with us on WhatsApp"
+        >
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <div class="whatsapp-tooltip">Click to Chat</div>
+    </div>
+
+    <!-- Google Analytics (Replace YOUR_GA_MEASUREMENT_ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YOUR_GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-YOUR_GA_MEASUREMENT_ID');
+    </script>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                navLinks.classList.remove('active');
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form Submission with Formspree (AJAX)
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const formData = new FormData(contactForm);
+                const response = await fetch(this.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                if (response.ok) {
+                    alert('Thank you for your message! We will get back to you soon.');
+                    contactForm.reset();
+                } else {
+                    alert('Oops! There was an error sending your message. Please try again.');
+                }
+            });
+        }
+
+        // Dynamic Year
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
