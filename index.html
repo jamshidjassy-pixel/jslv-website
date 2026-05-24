@@ -1,1159 +1,695 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>JS Virtual Logistics & Business Solutions | Your Business Friend — Online, Anytime.</title>
-    <meta name="description" content="Remote Operations & Dispatch Support for Growing Businesses Support Services for Australia, UK, UAE and USA">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>JSLV | Remote Operations for Trades & Logistics</title>
+  <meta name="description" content="Remote dispatch, scheduling, and logistics support for plumbing, electrical, cleaning, and e-commerce businesses. Serving Australia, UK, USA & UAE. We master Brillion, ServiceM8, Zoho, AI tools and more.">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <!-- Favicon (inline SVG data URI) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ff7a00'/%3E%3Ctext x='50%25' y='55%25' font-family='Arial,sans-serif' font-size='28' font-weight='bold' fill='white' text-anchor='middle' dy='.1em'%3EJSL%3C/text%3E%3C/svg%3E">
+    body {
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-    <!-- Structured Data: Organization -->
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "JS Virtual Logistics & Business Solutions",
-            "alternateName": "JSLV",
-            "url": "https://www.jslv.in",
-            "logo": "https://www.jslv.in/logo.png",
-            "description": "Remote Dispatch, Logistics Coordination, Truck Dispatch, Accounting and Business Support Services",
-            "email": "jamshid@jslv.in",
-            "telephone": "+918301013842",
-            "address": [
-                {
-                    "@type": "PostalAddress",
-                    "streetAddress": "Mattool",
-                    "addressLocality": "Kannur",
-                    "addressRegion": "Kerala",
-                    "addressCountry": "IN"
-                },
-                {
-                    "@type": "PostalAddress",
-                    "streetAddress": "Office 117A, Auto Center, A-Block, Port Saeed, Deira",
-                    "addressLocality": "Dubai",
-                    "addressCountry": "AE"
-                }
-            ],
-            "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+918301013842",
-                "contactType": "customer service",
-                "availableLanguage": ["English", "Hindi", "Malayalam"]
-            },
-            "sameAs": [
-                "https://wa.me/918301013842",
-                "https://www.facebook.com/yourpage",
-                "https://www.instagram.com/yourprofile",
-                "https://www.linkedin.com/company/yourco",
-                "https://www.youtube.com/@yourchannel"
-            ]
-        }
-    </script>
+    header {
+      background: white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 1rem 0;
+    }
 
-    <style>
-        :root {
-            --deep-blue: #071d35;
-            --orange: #ff7a00;
-            --orange-light: #ff8a00;
-            --white: #ffffff;
-            --light-bg: #f5f8fc;
-            --gray: #666;
-            --border: rgba(255, 255, 255, 0.15);
-            --shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
-            --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
-            --radius: 18px;
-            --transition: all 0.3s ease;
-        }
+    .header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #1e3c72, #2b5876);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .logo p {
+      font-size: 0.75rem;
+      color: #475569;
+    }
 
-        body {
-            background: #fff;
-            color: #222;
-            overflow-x: hidden;
-        }
+    .main-nav {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-link {
+      text-decoration: none;
+      font-weight: 600;
+      color: #1e293b;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .nav-link:hover {
+      color: #0f3b2c;
+    }
+    .country-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-left: 1rem;
+    }
+    .country-btn {
+      background: transparent;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: #334155;
+    }
+    .country-btn.active {
+      background: #1e3c72;
+      color: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .country-btn:hover:not(.active) {
+      background: #e2e8f0;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 0 20px;
-        }
+    @media (max-width: 700px) {
+      .header-flex {
+        flex-direction: column;
+        text-align: center;
+      }
+      .main-nav {
+        justify-content: center;
+      }
+      .country-nav {
+        justify-content: center;
+        margin-left: 0;
+      }
+    }
 
-        /* ---------- HEADER ---------- */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(7, 29, 53, 0.95);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
-            padding: 14px 0;
-            transition: padding 0.3s ease;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.2);
-        }
-        header.scrolled {
-            padding: 10px 0;
-        }
-
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-
-        .logo-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--orange);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            font-weight: 700;
-            box-shadow: 0 4px 15px rgba(255, 122, 0, 0.4);
-        }
-
-        .logo-text h2 {
-            color: white;
-            font-size: 22px;
-            font-weight: 700;
-            line-height: 1.2;
-        }
-        .tagline {
-            color: var(--orange-light);
-            font-size: 12px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 22px;
-        }
-        .nav-links a {
-            color: rgba(255, 255, 255, 0.85);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--orange);
-            transition: width 0.3s ease;
-        }
-        .nav-links a:hover,
-        .nav-links a:focus {
-            color: #fff;
-            outline: none;
-        }
-        .nav-links a:hover::after,
-        .nav-links a:focus::after {
-            width: 100%;
-        }
-
-        .mobile-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 26px;
-            cursor: pointer;
-            transition: var(--transition);
-            padding: 8px;
-        }
-        .mobile-toggle:hover,
-        .mobile-toggle:focus {
-            color: var(--orange);
-            outline: none;
-        }
-
-        /* ---------- HERO ---------- */
-        .hero {
-            padding-top: 160px;
-            padding-bottom: 80px;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, rgba(7,29,53,0.92) 0%, rgba(7,29,53,0.82) 100%),
-                        url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, rgba(255,122,0,0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: 0;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-content h1 {
-            font-size: 58px;
-            line-height: 1.15;
-            font-weight: 800;
-            margin-bottom: 25px;
-            background: linear-gradient(to right, #fff, #e0e0e0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .hero-sub {
-            font-size: 20px;
-            line-height: 1.7;
-            margin-bottom: 35px;
-            opacity: 0.9;
-        }
-        .hero-sub strong {
-            color: var(--orange);
-            font-weight: 700;
-        }
-
-        .service-tags {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 35px;
-        }
-        .service-tags span {
-            padding: 10px 22px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--border);
-            border-radius: 40px;
-            font-size: 14px;
-            font-weight: 500;
-            backdrop-filter: blur(4px);
-            transition: var(--transition);
-        }
-        .service-tags span:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: var(--orange);
-            transform: translateY(-2px);
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 10px;
-            padding: 16px 36px;
-            background: linear-gradient(135deg, #ff7a00, #ff5500);
-            color: white;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(255, 122, 0, 0.4);
-            border: none;
-            cursor: pointer;
-        }
-        .btn:hover,
-        .btn:focus {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(255, 122, 0, 0.5);
-            background: linear-gradient(135deg, #ff8c1a, #ff6a00);
-            outline: none;
-        }
-
-        .hero-visual {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .hero-card {
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 30px;
-            padding: 40px;
-            text-align: center;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-        }
-        .hero-card i {
-            font-size: 64px;
-            color: var(--orange);
-            margin-bottom: 20px;
-            display: block;
-        }
-        .hero-card h3 {
-            font-size: 22px;
-            margin-bottom: 15px;
-        }
-        .hero-card p {
-            opacity: 0.85;
-            line-height: 1.6;
-        }
-
-        /* ---------- SECTIONS ---------- */
-        section {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 42px;
-            font-weight: 700;
-            color: var(--deep-blue);
-            margin-bottom: 15px;
-            position: relative;
-        }
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 70px;
-            height: 4px;
-            background: var(--orange);
-            margin: 20px auto 0;
-            border-radius: 4px;
-        }
-        .section-sub {
-            text-align: center;
-            color: #666;
-            margin-bottom: 60px;
-            font-size: 17px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* ---------- SERVICE CARDS ---------- */
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: white;
-            padding: 35px 30px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid #f0f0f0;
-            position: relative;
-            overflow: hidden;
-        }
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--orange), #ff5500);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-        }
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
-            border-color: #e0e0e0;
-        }
-        .card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .card-icon {
-            font-size: 40px;
-            color: var(--orange);
-            margin-bottom: 20px;
-            background: rgba(255,122,0,0.1);
-            width: 70px;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 20px;
-        }
-
-        .card h3 {
-            color: var(--deep-blue);
-            margin-bottom: 20px;
-            font-size: 20px;
-            font-weight: 600;
-        }
-        .card ul {
-            padding-left: 20px;
-            line-height: 2.2;
-            color: #444;
-        }
-        .card ul li {
-            position: relative;
-            padding-left: 15px;
-        }
-        .card ul li::before {
-            content: '✓';
-            color: var(--orange);
-            font-weight: bold;
-            position: absolute;
-            left: -5px;
-        }
-
-        /* ---------- WHY CHOOSE US CARDS (similar to services but without lists) ---------- */
-        .why-card {
-            background: white;
-            padding: 35px 25px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid #f0f0f0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .why-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--orange), #ff5500);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-        }
-        .why-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
-            border-color: #e0e0e0;
-        }
-        .why-card:hover::before {
-            transform: scaleX(1);
-        }
-        .why-card .card-icon {
-            margin: 0 auto 20px;
-        }
-        .why-card h3 {
-            color: var(--deep-blue);
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-        .why-card p {
-            color: #555;
-            line-height: 1.8;
-        }
-
-        /* ---------- PROCESS ---------- */
-        .process {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-        }
-        .step {
-            padding: 40px 20px;
-            background: white;
-            border-radius: var(--radius);
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-            border: 1px solid #f0f0f0;
-        }
-        .step:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--orange);
-        }
-        .step-number {
-            width: 55px;
-            height: 55px;
-            background: linear-gradient(135deg, var(--orange), #ff5500);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 26px;
-            font-weight: 700;
-            margin: 0 auto 20px;
-            box-shadow: 0 8px 20px rgba(255,122,0,0.3);
-        }
-        .step h3 {
-            font-size: 18px;
-            color: var(--deep-blue);
-            margin-bottom: 10px;
-        }
-        .step p {
-            color: #666;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        /* ---------- ABOUT US ---------- */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.3fr;
-            gap: 50px;
-            align-items: center;
-        }
-        .about-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: rgba(255,122,0,0.08);
-            border-radius: 30px;
-            padding: 40px;
-        }
-        .about-image i {
-            font-size: 120px;
-            color: var(--orange);
-            opacity: 0.8;
-        }
-        .about-text h3 {
-            font-size: 30px;
-            color: var(--deep-blue);
-            margin-bottom: 25px;
-            line-height: 1.3;
-        }
-        .about-text p {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 20px;
-        }
-        .about-text .btn {
-            margin-top: 15px;
-        }
-
-        /* ---------- CONTACT ---------- */
-        .contact-section {
-            background: #f5f7fb;
-        }
-        .contact-wrap {
-            display: grid;
-            grid-template-columns: 1fr 1.3fr;
-            gap: 40px;
-        }
-        .contact-card {
-            background: white;
-            padding: 30px;
-            border-radius: var(--radius);
-            margin-bottom: 25px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border-left: 5px solid var(--orange);
-        }
-        .contact-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
-        }
-        .contact-card h3 {
-            margin-bottom: 20px;
-            color: var(--deep-blue);
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .contact-card p {
-            line-height: 1.8;
-            color: #555;
-        }
-        .contact-right {
-            background: white;
-            padding: 40px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-        .contact-right form {
-            display: flex;
-            flex-direction: column;
-        }
-        .contact-right label {
-            font-weight: 500;
-            margin-bottom: 4px;
-            color: #333;
-        }
-        .contact-right input,
-        .contact-right textarea,
-        .contact-right select {
-            padding: 14px 18px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 12px;
-            font-size: 15px;
-            transition: var(--transition);
-            background: #fafafa;
-        }
-        .contact-right input:focus,
-        .contact-right textarea:focus,
-        .contact-right select:focus {
-            outline: none;
-            border-color: var(--orange);
-            box-shadow: 0 0 0 3px rgba(255,122,0,0.1);
-            background: white;
-        }
-        .contact-right button {
-            padding: 16px;
-            background: linear-gradient(135deg, #ff7a00, #ff5500);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: 0 8px 25px rgba(255,122,0,0.3);
-            letter-spacing: 0.5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .contact-right button:hover,
-        .contact-right button:focus {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(255,122,0,0.4);
-            outline: none;
-        }
-
-        /* ---------- FOOTER ---------- */
-        footer {
-            background: var(--deep-blue);
-            color: rgba(255,255,255,0.8);
-            padding: 60px 20px 30px;
-            text-align: center;
-        }
-        footer h2 {
-            color: white;
-            margin-bottom: 10px;
-            font-size: 24px;
-        }
-        footer .footer-tagline {
-            color: var(--orange);
-            margin-bottom: 30px;
-        }
-        footer .footer-info {
-            margin: 15px 0;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-        footer .footer-info i {
-            color: var(--orange);
-            margin-right: 6px;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin: 30px 0 25px;
-            flex-wrap: wrap;
-        }
-        .social-links a {
-            color: rgba(255,255,255,0.75);
-            font-size: 24px;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.08);
-        }
-        .social-links a:hover,
-        .social-links a:focus {
-            color: var(--orange);
-            background: rgba(255,255,255,0.15);
-            transform: translateY(-3px);
-            outline: none;
-        }
-
-        .copyright {
-            margin-top: 30px;
-            font-size: 14px;
-            opacity: 0.7;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 25px;
-        }
-
-        /* ---------- WHATSAPP FLOAT ---------- */
-        .whatsapp-float {
-            position: fixed;
-            right: 25px;
-            bottom: 25px;
-            width: 65px;
-            height: 65px;
-            background: #25D366;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 32px;
-            text-decoration: none;
-            color: white;
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-            transition: var(--transition);
-            z-index: 999;
-            animation: pulse 2s infinite;
-        }
-        .whatsapp-float:hover,
-        .whatsapp-float:focus {
-            transform: scale(1.1);
-            box-shadow: 0 15px 35px rgba(37, 211, 102, 0.5);
-            outline: none;
-        }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-
-        /* ---------- MOBILE NAV ---------- */
-        @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 70%;
-                height: 100vh;
-                background: rgba(7, 29, 53, 0.98);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                padding: 80px 30px 30px;
-                gap: 30px;
-                transition: right 0.3s ease;
-                z-index: 1001;
-            }
-            .nav-links.active {
-                right: 0;
-            }
-            .mobile-toggle {
-                display: block;
-                z-index: 1002;
-            }
-            .hero-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .hero h1 {
-                font-size: 36px;
-            }
-            .hero-sub {
-                font-size: 17px;
-            }
-            .process {
-                grid-template-columns: 1fr;
-            }
-            .contact-wrap {
-                grid-template-columns: 1fr;
-            }
-            .hero-visual {
-                display: none;
-            }
-            .service-tags {
-                justify-content: center;
-            }
-            .about-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .about-image {
-                padding: 30px;
-            }
-            .about-image i {
-                font-size: 90px;
-            }
-        }
-
-        /* Focus-visible outline for keyboard navigation */
-        a:focus-visible,
-        button:focus-visible,
-        input:focus-visible,
-        select:focus-visible,
-        textarea:focus-visible {
-            outline: 2px solid var(--orange);
-            outline-offset: 2px;
-        }
-        .nav-links a:focus-visible {
-            outline: 2px solid white;
-        }
-        .mobile-toggle:focus-visible {
-            outline: 2px solid white;
-        }
-    </style>
+    /* Hero & sections */
+    .hero {
+      padding: 3rem 0 2rem;
+      background: linear-gradient(135deg, #f1f5f9 0%, #ffffff 100%);
+    }
+    .hero-content {
+      max-width: 800px;
+    }
+    .hero h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .country-badge {
+      display: inline-block;
+      background: #e2e8f0;
+      padding: 0.25rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .btn-primary {
+      background: #0f3b2c;
+      color: white;
+      padding: 0.8rem 1.8rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-block;
+      transition: 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: #1e5a3c;
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #0f3b2c;
+      color: #0f3b2c;
+      padding: 0.8rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+    }
+    section {
+      padding: 3rem 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .services-grid, .process-grid, .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .service-card, .process-step, .tool-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .tool-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .tool-card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .tool-card li {
+      margin-bottom: 0.4rem;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .tool-card li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #0f3b2c;
+      font-weight: bold;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .price-card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.8rem;
+      text-align: center;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+    }
+    .price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0f3b2c;
+      margin: 1rem 0;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      text-align: center;
+    }
+    .why-item {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 20px;
+    }
+    .google-form-container {
+      background: white;
+      border-radius: 28px;
+      padding: 1rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+    .google-form-container iframe {
+      width: 100%;
+      height: 1500px;
+      border: none;
+      display: block;
+    }
+    @media (max-width: 640px) {
+      .hero h2 { font-size: 1.8rem; }
+      .container { padding: 0 16px; }
+      .google-form-container iframe {
+        height: 1700px; /* Slightly taller on mobile to avoid double scroll */
+      }
+    }
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      padding: 2rem 0;
+      text-align: center;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .footer-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .blog-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .blog-card h3 {
+      font-size: 1.5rem;
+      padding: 1.5rem 1.5rem 0;
+    }
+    .blog-card .meta {
+      padding: 0 1.5rem;
+      color: #64748b;
+      font-size: 0.85rem;
+    }
+    .blog-card p {
+      padding: 1rem 1.5rem;
+    }
+    .read-more {
+      display: inline-block;
+      margin: 0 1.5rem 1.5rem;
+      color: #0f3b2c;
+      font-weight: 600;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
 
-<header id="header">
-    <div class="container nav">
-        <div class="logo">
-            <div class="logo-icon" aria-hidden="true">JSL</div>
-            <div class="logo-text">
-                <h2>JSLV</h2>
-                <div class="tagline">Your Business Friend — Online, Anytime.</div>
-            </div>
-        </div>
-
-        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false">
-            <i class="fas fa-bars" aria-hidden="true"></i>
-        </button>
-
-        <div class="nav-links" id="navLinks" role="navigation" aria-label="Main navigation">
-            <a href="#" onclick="closeMenu()">Home</a>
-            <a href="#services" onclick="closeMenu()">Services</a>
-            <a href="#process" onclick="closeMenu()">Process</a>
-            <a href="#why-choose-us" onclick="closeMenu()">Why Us</a>
-            <a href="#about" onclick="closeMenu()">About</a>
-            <a href="#contact" onclick="closeMenu()">Contact</a>
-        </div>
+<header>
+  <div class="container header-flex">
+    <div class="logo">
+      <h1>JSLV</h1>
+      <p>Remote Operations & Dispatch Support</p>
     </div>
+    <div class="main-nav">
+      <a class="nav-link" data-view="home">🏠 Home</a>
+      <a class="nav-link" data-view="about">👥 About Us</a>
+      <a class="nav-link" data-view="blog">📘 Blog & Case Studies</a>
+      <div class="country-nav" id="countryNav">
+        <button data-country="au" class="country-btn">🇦🇺 Australia</button>
+        <button data-country="uk" class="country-btn">🇬🇧 UK</button>
+        <button data-country="usa" class="country-btn">🇺🇸 USA</button>
+        <button data-country="uae" class="country-btn">🇦🇪 UAE</button>
+      </div>
+    </div>
+  </div>
 </header>
 
-<section class="hero">
-    <div class="container hero-grid">
-        <div class="hero-content">
-            <h1>Remote Operations & Dispatch Support for Growing Businesses</h1>
-            <p class="hero-sub">
-                Supporting Businesses Across<br>
-                <strong>Australia • UK • UAE • USA</strong>
-            </p>
-            <div class="service-tags">
-                <span>Dispatch & Scheduling</span>
-                <span>Plumbing Coordination</span>
-                <span>Electrical Coordination</span>
-                <span>Logistics Operations</span>
-                <span>Truck Dispatch</span>
-                <span>Accounting Support</span>
-            </div>
-            <a class="btn" href="https://wa.me/918301013842">
-                <i class="fab fa-whatsapp" aria-hidden="true"></i> Book Free Consultation
-            </a>
-        </div>
-        <div class="hero-visual">
-            <div class="hero-card">
-                <i class="fas fa-headset" aria-hidden="true"></i>
-                <h3>Remote Operational Support</h3>
-                <p>Dedicated business support designed to streamline operations and improve responsiveness.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="services">
-    <div class="container">
-        <h2 class="section-title">Our Services</h2>
-        <p class="section-sub">Remote operational support designed for growing service businesses.</p>
-
-        <div class="card-grid">
-            <div class="card">
-                <div class="card-icon" aria-hidden="true"><i class="fas fa-phone-volume"></i></div>
-                <h3>Dispatch & Scheduling Support</h3>
-                <ul>
-                    <li>Customer enquiry management</li>
-                    <li>Job booking & scheduling</li>
-                    <li>Technician coordination</li>
-                    <li>WhatsApp & phone support</li>
-                    <li>Follow-up management</li>
-                    <li>Customer review collection</li>
-                </ul>
-            </div>
-            <div class="card">
-                <div class="card-icon" aria-hidden="true"><i class="fas fa-ship"></i></div>
-                <h3>Logistics Coordination & Customer Support</h3>
-                <ul>
-                    <li>Shipment coordination</li>
-                    <li>Sea & air booking support</li>
-                    <li>Shipping documentation</li>
-                    <li>Warehouse coordination</li>
-                    <li>Last-mile coordination</li>
-                    <li>Customer support</li>
-                </ul>
-            </div>
-            <div class="card">
-                <div class="card-icon" aria-hidden="true"><i class="fas fa-truck"></i></div>
-                <h3>Truck Dispatch & Load Coordination</h3>
-                <ul>
-                    <li>Load coordination</li>
-                    <li>Driver communication</li>
-                    <li>Delivery updates</li>
-                    <li>Route scheduling</li>
-                    <li>Appointment booking</li>
-                    <li>Status reporting</li>
-                </ul>
-            </div>
-            <div class="card">
-                <div class="card-icon" aria-hidden="true"><i class="fas fa-calculator"></i></div>
-                <h3>Accounting & Back-Office Support</h3>
-                <ul>
-                    <li>Bookkeeping</li>
-                    <li>VAT preparation</li>
-                    <li>Payroll support</li>
-                    <li>Accounts receivable</li>
-                    <li>Accounts payable</li>
-                    <li>Financial reporting</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="process">
-    <div class="container">
-        <h2 class="section-title">How We Work</h2>
-        <p class="section-sub">Simple • Efficient • Scalable</p>
-        <div class="process">
-            <div class="step">
-                <div class="step-number" aria-hidden="true">1</div>
-                <h3>Requirement Discussion</h3>
-                <p>We understand your workflow and specific needs</p>
-            </div>
-            <div class="step">
-                <div class="step-number" aria-hidden="true">2</div>
-                <h3>Workflow Setup</h3>
-                <p>Custom process designed for your business</p>
-            </div>
-            <div class="step">
-                <div class="step-number" aria-hidden="true">3</div>
-                <h3>Dedicated Support</h3>
-                <p>A trained team assigned exclusively to you</p>
-            </div>
-            <div class="step">
-                <div class="step-number" aria-hidden="true">4</div>
-                <h3>Daily Execution</h3>
-                <p>Seamless operations, every single day</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="why-choose-us">
-    <div class="container">
-        <h2 class="section-title">Why Choose Us</h2>
-        <p class="section-sub">The perfect partner for your business growth and operational excellence.</p>
-        <div class="card-grid">
-            <div class="why-card">
-                <div class="card-icon" aria-hidden="true"><i class="fas fa-money-bill-wave"></i></div>
-                <h3>Dedicated Remote Team</h3>
-                <p>Specialized support aligned with your workflow.</p>
-            </div>
-            <div class="why-card">
-                <div class="card-icon" aria-hidden="true"><i class="fas fa-globe-americas"></i></div>
-                <h3>Lower Operating Cost</h3>
-                <p>Reduce overhead while maintaining responsiveness.</p>
-            </div>
-            <div class="why-card">
-                <div class="card-icon" aria-hidden="true"><i class="fas fa-shield-alt"></i></div>
-                <h3>Operational Experience</h3>
-                <p>16+ years in logistics, dispatch, coordination and support.</p>
-            </div>
-            <div class="why-card">
-                <div class="card-icon" aria-hidden="true"><i class="fas fa-language"></i></div>
-                <h3>Flexible Scaling</h3>
-                <p>Start small and scale when needed.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="about">
-    <div class="container">
-        <div class="about-grid">
-            <div class="about-image">
-                <i class="fas fa-users" aria-hidden="true"></i>
-            </div>
-            <div class="about-text">
-                <h3>Empowering Businesses Through Outsourcing</h3>
-                <p>JS Virtual Logistics & Business Solutions (JSLV) was founded with a mission to provide seamless remote support to small and medium-sized businesses. We understand the challenges of managing operations while trying to grow your business.</p>
-                <p>Based in India, JSLV supports businesses across Australia, UK, UAE, and USA by providing remote operations, dispatch, logistics coordination, accounting, and customer support solutions. we offer specialized outsourcing services that help businesses reduce overhead costs, streamline operations, and focus on their core competencies.</p>
-                <p>Our team of experienced professionals is dedicated to delivering reliable, efficient, and cost-effective solutions tailored to your specific business needs.</p>
-                <a href="#contact" class="btn">Get Started Today</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="contact" class="contact-section">
-    <div class="container">
-        <h2 class="section-title">Contact Us</h2>
-        <p class="section-sub">Let's discuss your business support requirement</p>
-        <div class="contact-wrap">
-            <div>
-                <div class="contact-card">
-                    <h3><i class="fas fa-flag" aria-hidden="true"></i> India Office</h3>
-                    <p><strong>JS Virtual Logistics Solutions</strong></p>
-                    <p>Mattool, Kannur, Kerala, India</p>
-                    <p><i class="fas fa-phone-alt" aria-hidden="true"></i> +91 8301013842</p>
-                    <p><i class="fas fa-envelope" aria-hidden="true"></i> jamshid@jslv.in</p>
-                    <p><i class="fas fa-globe" aria-hidden="true"></i> www.jslv.in</p>
-                </div>
-                <div class="contact-card">
-                    <h3><i class="fas fa-flag" aria-hidden="true"></i> UAE Office</h3>
-                    <p><strong>Nexa Global Accounting Service</strong></p>
-                    <p>Office 117A, Auto Center, A-Block, Port Saeed, Deira, Dubai</p>
-                    <p>P.O.Box: 48644</p>
-                    <p><i class="fas fa-phone-alt" aria-hidden="true"></i> +971 58 912 2510</p>
-                    <p><i class="fas fa-envelope" aria-hidden="true"></i> support@globalacsuae.com</p>
-                </div>
-            </div>
-            <div class="contact-right">
-                <form id="whatsappForm">
-                    <label for="name">Full Name</label>
-                    <input id="name" placeholder="Your full name" required>
-
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" placeholder="you@company.com">
-
-                    <label for="phone">Phone Number</label>
-                    <input id="phone" placeholder="+1234567890">
-
-                    <label for="service">Service Required</label>
-                    <select id="service">
-                        <option>Dispatch & Scheduling Support</option>
-                        <option>Plumbing, Electrical-Coordination Support</option>
-                        <option>Truck Dispatcher Support</option>
-                        <option>Logistics Coordination</option>
-                        <option>Accounting Support</option>
-                    </select>
-
-                    <label for="message">Message</label>
-                    <textarea id="message" rows="5" placeholder="Describe your requirements..." required></textarea>
-
-                    <button type="submit"><i class="fab fa-whatsapp" aria-hidden="true"></i> Send to WhatsApp</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
+<main id="mainContent"></main>
 
 <footer>
-    <h2>JS Virtual Logistics & Business Solutions</h2>
-    <p class="footer-tagline">Your Business Friend — Online, Anytime.</p>
-    <div class="footer-info">
-        <span><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Australia • UK • UAE • USA</span>
-        <span><i class="fas fa-phone-alt" aria-hidden="true"></i> +91 8301013842</span>
-        <span><i class="fas fa-envelope" aria-hidden="true"></i> jamshid@jslv.in</span>
+  <div class="container">
+    <div class="footer-links">
+      <a data-view="home">Home</a>
+      <a data-view="about">About</a>
+      <a data-view="blog">Blog</a>
+      <a href="mailto:jamshid@jslv.in">jamshid@jslv.in</a>
+      <a href="https://wa.me/918301013842" target="_blank">WhatsApp</a>
     </div>
-
-    <div class="social-links">
-        <a href="https://www.facebook.com/yourpage" target="_blank" rel="noopener" aria-label="Facebook">
-            <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://www.instagram.com/yourprofile" target="_blank" rel="noopener" aria-label="Instagram">
-            <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://www.linkedin.com/company/yourco" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <i class="fab fa-linkedin-in"></i>
-        </a>
-        <a href="https://www.youtube.com/@yourchannel" target="_blank" rel="noopener" aria-label="YouTube">
-            <i class="fab fa-youtube"></i>
-        </a>
-    </div>
-
-    <p class="copyright">© 2025 JSLV — All Rights Reserved</p>
+    <p>© 2025 JSLV — JS Virtual Logistics & Business Solutions. India Office: Mattool, Kannur, Kerala</p>
+    <p style="margin-top: 0.5rem; font-size: 0.8rem;">Your Business Partner — Online, Anytime.</p>
+  </div>
 </footer>
 
-<a class="whatsapp-float" href="https://wa.me/918301013842" target="_blank" aria-label="Chat on WhatsApp">
-    <i class="fab fa-whatsapp" aria-hidden="true"></i>
-</a>
-
 <script>
-    // Mobile menu toggle
-    const mobileToggle = document.getElementById('mobileToggle');
-    const navLinks = document.getElementById('navLinks');
-
-    function toggleMenu() {
-        const isActive = navLinks.classList.toggle('active');
-        const icon = mobileToggle.querySelector('i');
-        if (isActive) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times');
-            mobileToggle.setAttribute('aria-expanded', 'true');
-        } else {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars');
-            mobileToggle.setAttribute('aria-expanded', 'false');
-        }
+  // ---------- COUNTRY CONTENT ----------
+  const contentMap = {
+    au: {
+      title: "Remote Dispatch for Australian Trades & Logistics",
+      subtitle: "Supporting plumbers, electricians, cleaners & e-commerce across Sydney, Melbourne, Brisbane & Perth.",
+      ctaText: "Start Free Trial Week (AUD)",
+      heroDesc: "We handle customer calls, job scheduling, technician coordination, and follow-ups – so you can focus on the job. Pay from $10 AUD/hour. No lock-in contracts.",
+      pricingCurrency: "AUD",
+      pricingPlans: [
+        { name: "Starter", hours: "20h/month", price: "180", desc: "Light call handling & scheduling" },
+        { name: "Growth", hours: "80h/month", price: "700", desc: "Ideal for 2-3 techs" },
+        { name: "Scale", hours: "160h/month", price: "1,000", desc: "Full-time dispatcher" }
+      ],
+      services: [
+        "📞 Customer enquiry & call management", "📅 Job booking & real-time scheduling", "👨‍🔧 Technician dispatch & route optimization", "💬 WhatsApp & phone support (AEST hours)", "⭐ Follow-up & review collection", "🚚 E-commerce & freight tracking support"
+      ],
+      whyItems: ["Works while you sleep (your timezone)", "16+ yrs logistics experience", "Lower cost than local hire", "ServiceM8, Jobber, Zoho ready"]
+    },
+    uk: {
+      title: "Remote Operations for UK Trades & Logistics",
+      subtitle: "Supporting plumbing, electrical, cleaning & 3PLs across London, Manchester, Birmingham & more.",
+      ctaText: "Claim Free Trial (GBP)",
+      heroDesc: "We act as your remote dispatch team – handling customer calls, engineer scheduling, shipment tracking, and urgent escalations. From £10/hour.",
+      pricingCurrency: "GBP",
+      pricingPlans: [
+        { name: "Starter", hours: "20h/month", price: "180", desc: "Light support" },
+        { name: "Growth", hours: "80h/month", price: "700", desc: "3-5 engineers" },
+        { name: "Scale", hours: "160h/month", price: "1,000", desc: "Dedicated coordinator" }
+      ],
+      services: [
+        "📞 Live call answering during UK business hours", "📅 Engineer job scheduling & rescheduling", "🚚 Last-mile delivery coordination", "📦 Import/export documentation support", "💬 Multi-channel support", "⭐ Customer feedback & retention"
+      ],
+      whyItems: ["Aligns with GMT/BST", "Reduce no-show rates", "Transparent billing", "Fast onboarding 48h"]
+    },
+    usa: {
+      title: "US-Based Hours Remote Dispatch Support",
+      subtitle: "For electrical, plumbing, cleaning & e-commerce logistics across EST, CST, MST, PST.",
+      ctaText: "Start Free Trial (USD)",
+      heroDesc: "Pay only for the hours you use – from $10 USD/hour. We work overnight IST to match your timezone.",
+      pricingCurrency: "USD",
+      pricingPlans: [
+        { name: "Starter", hours: "20h/month", price: "180", desc: "Entry-level" },
+        { name: "Growth", hours: "80h/month", price: "700", desc: "Popular for small fleets" },
+        { name: "Scale", hours: "160h/month", price: "1,000", desc: "Full remote operator" }
+      ],
+      services: [
+        "📞 Inbound & outbound customer calls", "📦 Freight & load board coordination (TruckSmarter)", "🗓️ Appointment scheduling & route planning", "📄 Shipping document preparation", "🤝 Driver communication & ETA updates", "📊 Daily reporting"
+      ],
+      whyItems: ["Follows all US time zones", "Specialized in logistics & trades", "ERP & WMS friendly", "No long-term contracts"]
+    },
+    uae: {
+      title: "Dubai & UAE Remote Operations Support",
+      subtitle: "Logistics coordination, dispatch, and customer service for UAE-based companies.",
+      ctaText: "طلب تجربة مجانية (AED)",
+      heroDesc: "Based in India with deep UAE experience (ex-UASC). Sea/air freight, shipping docs, customs coordination.",
+      pricingCurrency: "AED",
+      pricingPlans: [
+        { name: "Starter", hours: "20h/month", price: "450", desc: "Light coordination" },
+        { name: "Growth", hours: "80h/month", price: "1,000", desc: "Best for freight forwarders" },
+        { name: "Scale", hours: "160h/month", price: "1,800", desc: "Dedicated operations team" }
+      ],
+      services: [
+        "📦 Sea/air freight booking support", "📑 Bill of lading & IMCO declarations", "🚛 Last-mile delivery coordination", "📞 Customer service for e-commerce", "🏢 Dubai Trade & Calogi platform", "⭐ 16+ years local logistics expertise"
+      ],
+      whyItems: ["UAE port & customs know-how", "English/Arabic basic support", "Cost-effective remote model", "Same-day reporting"]
     }
+  };
 
-    mobileToggle.addEventListener('click', toggleMenu);
+  // ---------- ABOUT PAGE ----------
+  const aboutContent = `
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="country-badge">📍 About JS Virtual Logistics & Business Solutions</div>
+          <h2>Your Remote Operations Partner Since 2024</h2>
+          <p>We help small and medium businesses in Australia, UK, USA, and UAE streamline their dispatch, logistics, and customer coordination – so you can focus on growth.</p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h2 class="section-title">Who We Are</h2>
+        <p style="max-width: 800px; margin: 0 auto 2rem; text-align: center;">JSLV was founded by Jamshid Abdul Jaleel, a logistics and operations specialist with over 16 years of hands-on experience at United Arab Shipping Company and other global firms. Based in Kerala, India, we provide dedicated remote teams that work inside your business hours – no timezone friction, no hidden costs.</p>
+        <div class="why-grid">
+          <div class="why-item">🎯 <strong>Mission</strong><br>Empower trades and logistics businesses with affordable, reliable operational support.</div>
+          <div class="why-item">🧠 <strong>Expertise</strong><br>Sea/air freight, customs docs, dispatch scheduling, CRM & ERP tools.</div>
+          <div class="why-item">🌏 <strong>Global Reach</strong><br>Clients in 4 countries, but we focus on local timezones and practices.</div>
+        </div>
+        <div style="margin-top: 2rem; text-align: center;">
+          <img src="https://placehold.co/400x200?text=Jamshid+Leading+Team" alt="JSLV Team" style="max-width:100%; border-radius: 24px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
+          <p style="margin-top: 1rem;"><strong>Jamshid Abdul Jaleel</strong> – Operations Lead (16+ yrs logistics, ex-UASC)</p>
+        </div>
+      </div>
+    </section>
+  `;
 
-    function closeMenu() {
-        navLinks.classList.remove('active');
-        const icon = mobileToggle.querySelector('i');
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-        mobileToggle.setAttribute('aria-expanded', 'false');
+  // ---------- BLOG / CASE STUDY PAGE ----------
+  const blogContent = `
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="country-badge">📘 Case Studies & Industry Insights</div>
+          <h2>Real Results from Real Clients</h2>
+          <p>See how JSLV helped businesses reduce costs, save time, and improve customer satisfaction.</p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <div class="blog-card">
+          <h3>Case Study: How a Sydney Plumbing Company Saved 20 Hours/Week with Remote Dispatch</h3>
+          <div class="meta">📅 March 2025 | ⏱ 4 min read</div>
+          <p>A 5‑technician plumbing business in Sydney was struggling with missed calls, double‑bookings, and late arrivals. JSLV implemented a dedicated remote dispatcher who answered all incoming calls (during AEST), scheduled jobs using ServiceM8, and sent appointment reminders via WhatsApp. Within 3 weeks, no‑show rates dropped by 70%, the owner saved 20 hours of admin work, and customer reviews increased by 40%.</p>
+          <a href="https://wa.me/918301013842?text=I%20read%20your%20Sydney%20plumbing%20case%20study%20and%20want%20similar%20support" target="_blank" class="read-more">→ Get the same results – Chat on WhatsApp</a>
+        </div>
+        <div class="blog-card">
+          <h3>Case Study: E‑commerce Logistics for a UK Fashion Brand</h3>
+          <div class="meta">📅 February 2025 | ⏱ 3 min read</div>
+          <p>A fast‑growing online fashion retailer in Manchester faced delays in shipment tracking, customs documentation errors for EU returns, and slow customer responses. JSLV took over all shipment follow‑ups, EDI manifest preparation, and customer support via email and web chat. Result: 50% faster resolution of delivery inquiries, zero demurrage charges, and a 25% increase in repeat purchases due to better post‑sale communication.</p>
+          <a href="https://wa.me/918301013842?text=I%20read%20the%20UK%20fashion%20case%20study%20–%20let's%20talk" target="_blank" class="read-more">→ Discuss your logistics needs on WhatsApp</a>
+        </div>
+        <div class="blog-card">
+          <h3>Case Study: Truck Dispatch for a Texas Logistics Company</h3>
+          <div class="meta">📅 January 2025 | ⏱ 3 min read</div>
+          <p>A small trucking company with 8 power units struggled with driver check‑calls and manual load tracking. JSLV provided a remote dispatcher who used TruckSmarter load board, coordinated with brokers, and sent daily driver updates. The client reduced admin hours by 15 per week, improved on‑time pickup rates by 30%, and scaled their fleet without hiring in‑house staff.</p>
+          <a href="https://wa.me/918301013842?text=Interested%20in%20truck%20dispatch%20like%20the%20Texas%20case%20study" target="_blank" class="read-more">→ Learn how we can help your fleet</a>
+        </div>
+      </div>
+    </section>
+  `;
+
+  // Tools section (same for all countries)
+  const toolsSection = `
+    <section id="tools">
+      <div class="container">
+        <h2 class="section-title">🔧 Tools We Master</h2>
+        <div class="tools-grid">
+          <div class="tool-card">
+            <h3>📊 Business & Operations</h3>
+            <ul>
+              <li>Brillion CRM</li>
+              <li>ServiceM8</li>
+              <li>Zoho Books</li>
+              <li>Advanced Excel & Google Sheets</li>
+              <li>Google Workspace & Outlook</li>
+            </ul>
+          </div>
+          <div class="tool-card">
+            <h3>💬 Communication & Support</h3>
+            <ul>
+              <li>Business WhatsApp</li>
+              <li>Facebook Meta Business Suite</li>
+              <li>Multi‑channel email/chat support</li>
+            </ul>
+          </div>
+          <div class="tool-card">
+            <h3>🤖 AI & Productivity</h3>
+            <ul>
+              <li>ChatGPT (workflow automation)</li>
+              <li>DeepSeek (research & analysis)</li>
+              <li>Canva (design & proposals)</li>
+            </ul>
+          </div>
+        </div>
+        <p style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem;">We integrate with your existing stack – no learning curve, immediate impact.</p>
+      </div>
+    </section>
+  `;
+
+  // Google Form embed HTML (responsive wrapper)
+  const googleFormEmbed = `
+    <div class="google-form-container">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSczjHIkAsRFKvX21JoCd6VLciOyLFJiKnZQcU4r6hD6k1w0rg/viewform?embedded=true" width="100%" height="1500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    </div>
+  `;
+
+  let currentView = 'home';
+  let currentCountry = 'au';
+
+  function renderHome() {
+    const data = contentMap[currentCountry];
+    if (!data) return;
+
+    const servicesHtml = data.services.map(s => `<li style="margin-bottom: 0.5rem;">${s}</li>`).join('');
+    const pricingHtml = data.pricingPlans.map(plan => {
+      let symbol = '';
+      if (data.pricingCurrency === 'AUD') symbol = 'A$';
+      else if (data.pricingCurrency === 'GBP') symbol = '£';
+      else if (data.pricingCurrency === 'USD') symbol = '$';
+      else symbol = 'AED ';
+      return `
+        <div class="price-card">
+          <h4>${plan.name}</h4>
+          <p>${plan.hours}</p>
+          <div class="price">${symbol}${plan.price}<small> /month</small></div>
+          <p>${plan.desc}</p>
+        </div>
+      `;
+    }).join('');
+    const whyHtml = data.whyItems.map(item => `<div class="why-item"><p>✓ ${item}</p></div>`).join('');
+
+    return `
+      <section class="hero">
+        <div class="container">
+          <div class="hero-content">
+            <div class="country-badge">📍 Serving ${currentCountry.toUpperCase()} • Remote from India</div>
+            <h2>${data.title}</h2>
+            <p>${data.subtitle}</p>
+            <p>${data.heroDesc}</p>
+            <div class="cta-group" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="#contact" class="btn-primary" id="freeTrialBtn">${data.ctaText} →</a>
+              <a href="#contact" class="btn-outline" id="quoteBtn">Get Quote</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services">
+        <div class="container">
+          <h2 class="section-title">Our Services for ${currentCountry.toUpperCase()}</h2>
+          <div class="services-grid">
+            <div class="service-card">
+              <h3>📋 Dispatch & Scheduling</h3>
+              <ul style="list-style: none; padding-left:0;">${servicesHtml.slice(0,3)}</ul>
+            </div>
+            <div class="service-card">
+              <h3>🚚 Logistics & E‑commerce</h3>
+              <ul style="list-style: none; padding-left:0;">${servicesHtml.slice(3)}</ul>
+            </div>
+            <div class="service-card">
+              <h3>📞 Customer Operations</h3>
+              <p>24h follow-up, review collection, escalation handling, live chat during your business hours.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing">
+        <div class="container">
+          <h2 class="section-title">Simple, Transparent Pricing (${data.pricingCurrency})</h2>
+          <div class="pricing-grid">${pricingHtml}</div>
+          <p style="text-align:center; margin-top:1.5rem;">✅ No setup fee | Cancel anytime | Free 1-week trial</p>
+        </div>
+      </section>
+
+      ${toolsSection}
+
+      <section id="why-us">
+        <div class="container">
+          <h2 class="section-title">Why Choose JSLV for ${currentCountry.toUpperCase()}</h2>
+          <div class="why-grid">
+            ${whyHtml}
+            <div class="why-item"><p>✓ 16+ years operations experience (UASC, Dubai)</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <h2 class="section-title">Start Your Free Trial Today</h2>
+          ${googleFormEmbed}
+          <div style="text-align: center; margin-top: 1.5rem;">
+            <a href="https://wa.me/918301013842?text=Hi%20JSLV,%20I'd%20like%20to%20discuss%20remote%20support%20for%20${currentCountry.toUpperCase()}" target="_blank" class="whatsapp-btn" style="display: inline-flex; width: auto; padding: 0.8rem 2rem;">📱 Or chat on WhatsApp</a>
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderAbout() {
+    return aboutContent;
+  }
+
+  function renderBlog() {
+    return blogContent;
+  }
+
+  function render() {
+    const main = document.getElementById('mainContent');
+    if (currentView === 'home') {
+      main.innerHTML = renderHome();
+      const freeTrialBtn = document.getElementById('freeTrialBtn');
+      const quoteBtn = document.getElementById('quoteBtn');
+      if (freeTrialBtn) {
+        freeTrialBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+      if (quoteBtn) {
+        quoteBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+    } else if (currentView === 'about') {
+      main.innerHTML = renderAbout();
+    } else if (currentView === 'blog') {
+      main.innerHTML = renderBlog();
     }
-
-    // Header shrink on scroll
-    window.addEventListener('scroll', () => {
-        const header = document.getElementById('header');
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
+    document.querySelectorAll('.nav-link').forEach(link => {
+      if (link.getAttribute('data-view') === currentView) link.style.color = '#0f3b2c';
+      else link.style.color = '#1e293b';
     });
+  }
 
-    // WhatsApp form submission
-    document.getElementById('whatsappForm').addEventListener('submit', function(e) {
-        e.preventDefault();
+  function setView(view, country = null) {
+    currentView = view;
+    if (country) currentCountry = country;
+    if (view === 'home') {
+      document.getElementById('countryNav').style.display = 'flex';
+      document.querySelectorAll('.country-btn').forEach(btn => {
+        if (btn.dataset.country === currentCountry) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+    } else {
+      document.getElementById('countryNav').style.display = 'none';
+    }
+    render();
+  }
 
-        let name = document.getElementById('name').value;
-        let email = document.getElementById('email').value;
-        let phone = document.getElementById('phone').value;
-        let service = document.getElementById('service').value;
-        let message = document.getElementById('message').value;
-
-        let text = `Hello JSLV,\nI submitted an enquiry from www.jslv.in\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\nRequirement: ${message}`;
-
-        let url = 'https://wa.me/918301013842?text=' + encodeURIComponent(text);
-        window.open(url, '_blank');
-        document.getElementById('whatsappForm').reset();
+  // Event listeners
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const view = link.getAttribute('data-view');
+      if (view === 'home') setView('home', currentCountry);
+      else setView(view, null);
     });
+  });
+
+  document.querySelectorAll('.country-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const country = btn.dataset.country;
+      currentCountry = country;
+      setView('home', country);
+    });
+  });
+
+  document.querySelectorAll('.footer-links a').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const view = link.getAttribute('data-view');
+      if (view === 'home') setView('home', currentCountry);
+      else if (view === 'about') setView('about', null);
+      else if (view === 'blog') setView('blog', null);
+    });
+  });
+
+  // Initial load
+  setView('home', 'au');
 </script>
-
 </body>
 </html>
