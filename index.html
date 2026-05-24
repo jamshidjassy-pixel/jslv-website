@@ -113,7 +113,6 @@
       }
     }
 
-    /* Hero & sections */
     .hero {
       padding: 3rem 0 2rem;
       background: linear-gradient(135deg, #f1f5f9 0%, #ffffff 100%);
@@ -184,6 +183,22 @@
       border-radius: 24px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
+    .service-card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .service-card li {
+      margin-bottom: 0.5rem;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .service-card li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #0f3b2c;
+      font-weight: bold;
+    }
     .tool-card h3 {
       font-size: 1.3rem;
       margin-bottom: 0.75rem;
@@ -253,7 +268,7 @@
       .hero h2 { font-size: 1.8rem; }
       .container { padding: 0 16px; }
       .google-form-container iframe {
-        height: 1700px; /* Slightly taller on mobile to avoid double scroll */
+        height: 1700px;
       }
     }
     footer {
@@ -300,6 +315,21 @@
       font-weight: 600;
       text-decoration: none;
     }
+    .whatsapp-btn {
+      background: #25D366;
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 0.9rem;
+      font-weight: bold;
+      border-radius: 40px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
@@ -336,27 +366,28 @@
       <a href="https://wa.me/918301013842" target="_blank">WhatsApp</a>
     </div>
     <p>© 2025 JSLV — JS Virtual Logistics & Business Solutions. India Office: Mattool, Kannur, Kerala</p>
-    <p style="margin-top: 0.5rem; font-size: 0.8rem;">Your Business Partner — Online, Anytime.</p>
+    <p style="margin-top: 0.5rem; font-size: 0.8rem;">Your Business Friend — Online, Anytime.</p>
   </div>
 </footer>
 
 <script>
-  // ---------- COUNTRY CONTENT ----------
+  // Country-specific content
   const contentMap = {
     au: {
       title: "Remote Dispatch for Australian Trades & Logistics",
       subtitle: "Supporting plumbers, electricians, cleaners & e-commerce across Sydney, Melbourne, Brisbane & Perth.",
       ctaText: "Start Free Trial Week (AUD)",
-      heroDesc: "We handle customer calls, job scheduling, technician coordination, and follow-ups – so you can focus on the job. Pay from $10 AUD/hour. No lock-in contracts.",
+      heroDesc: "We handle customer calls, job scheduling, technician coordination, and follow-ups – so you can focus on the job. Pay from $15 AUD/hour. No lock-in contracts.",
       pricingCurrency: "AUD",
       pricingPlans: [
-        { name: "Starter", hours: "20h/month", price: "180", desc: "Light call handling & scheduling" },
-        { name: "Growth", hours: "80h/month", price: "700", desc: "Ideal for 2-3 techs" },
+        { name: "Starter", hours: "20h/month", price: "200", desc: "Light call handling & scheduling" },
+        { name: "Growth", hours: "80h/month", price: "750", desc: "Ideal for 2-3 techs" },
         { name: "Scale", hours: "160h/month", price: "1,000", desc: "Full-time dispatcher" }
       ],
-      services: [
-        "📞 Customer enquiry & call management", "📅 Job booking & real-time scheduling", "👨‍🔧 Technician dispatch & route optimization", "💬 WhatsApp & phone support (AEST hours)", "⭐ Follow-up & review collection", "🚚 E-commerce & freight tracking support"
-      ],
+      services: {
+        dispatch: ["📞 Customer enquiry & call management", "📅 Job booking & real-time scheduling", "👨‍🔧 Technician dispatch & route optimization"],
+        logistics: ["💬 WhatsApp & phone support (AEST hours)", "⭐ Follow-up & review collection", "🚚 E-commerce & freight tracking support"]
+      },
       whyItems: ["Works while you sleep (your timezone)", "16+ yrs logistics experience", "Lower cost than local hire", "ServiceM8, Jobber, Zoho ready"]
     },
     uk: {
@@ -366,29 +397,31 @@
       heroDesc: "We act as your remote dispatch team – handling customer calls, engineer scheduling, shipment tracking, and urgent escalations. From £10/hour.",
       pricingCurrency: "GBP",
       pricingPlans: [
-        { name: "Starter", hours: "20h/month", price: "180", desc: "Light support" },
-        { name: "Growth", hours: "80h/month", price: "700", desc: "3-5 engineers" },
-        { name: "Scale", hours: "160h/month", price: "1,000", desc: "Dedicated coordinator" }
+        { name: "Starter", hours: "20h/month", price: "120", desc: "Light support" },
+        { name: "Growth", hours: "80h/month", price: "400", desc: "3-5 engineers" },
+        { name: "Scale", hours: "160h/month", price: "650", desc: "Dedicated coordinator" }
       ],
-      services: [
-        "📞 Live call answering during UK business hours", "📅 Engineer job scheduling & rescheduling", "🚚 Last-mile delivery coordination", "📦 Import/export documentation support", "💬 Multi-channel support", "⭐ Customer feedback & retention"
-      ],
+      services: {
+        dispatch: ["📞 Live call answering during UK business hours", "📅 Engineer job scheduling & rescheduling", "🚚 Last-mile delivery coordination"],
+        logistics: ["📦 Import/export documentation support", "💬 Multi-channel support", "⭐ Customer feedback & retention"]
+      },
       whyItems: ["Aligns with GMT/BST", "Reduce no-show rates", "Transparent billing", "Fast onboarding 48h"]
     },
     usa: {
       title: "US-Based Hours Remote Dispatch Support",
       subtitle: "For electrical, plumbing, cleaning & e-commerce logistics across EST, CST, MST, PST.",
       ctaText: "Start Free Trial (USD)",
-      heroDesc: "Pay only for the hours you use – from $10 USD/hour. We work overnight IST to match your timezone.",
+      heroDesc: "Pay only for the hours you use – from $105 USD/hour. We work overnight IST to match your timezone.",
       pricingCurrency: "USD",
       pricingPlans: [
-        { name: "Starter", hours: "20h/month", price: "180", desc: "Entry-level" },
-        { name: "Growth", hours: "80h/month", price: "700", desc: "Popular for small fleets" },
-        { name: "Scale", hours: "160h/month", price: "1,000", desc: "Full remote operator" }
+        { name: "Starter", hours: "20h/month", price: "200", desc: "Entry-level" },
+        { name: "Growth", hours: "80h/month", price: "500", desc: "Popular for small fleets" },
+        { name: "Scale", hours: "160h/month", price: "900", desc: "Full remote operator" }
       ],
-      services: [
-        "📞 Inbound & outbound customer calls", "📦 Freight & load board coordination (TruckSmarter)", "🗓️ Appointment scheduling & route planning", "📄 Shipping document preparation", "🤝 Driver communication & ETA updates", "📊 Daily reporting"
-      ],
+      services: {
+        dispatch: ["📞 Inbound & outbound customer calls", "📦 Freight & load board coordination (TruckSmarter)", "🗓️ Appointment scheduling & route planning"],
+        logistics: ["📄 Shipping document preparation", "🤝 Driver communication & ETA updates", "📊 Daily reporting"]
+      },
       whyItems: ["Follows all US time zones", "Specialized in logistics & trades", "ERP & WMS friendly", "No long-term contracts"]
     },
     uae: {
@@ -399,17 +432,18 @@
       pricingCurrency: "AED",
       pricingPlans: [
         { name: "Starter", hours: "20h/month", price: "450", desc: "Light coordination" },
-        { name: "Growth", hours: "80h/month", price: "1,000", desc: "Best for freight forwarders" },
-        { name: "Scale", hours: "160h/month", price: "1,800", desc: "Dedicated operations team" }
+        { name: "Growth", hours: "80h/month", price: "800", desc: "Best for freight forwarders" },
+        { name: "Scale", hours: "160h/month", price: "1,650", desc: "Dedicated operations team" }
       ],
-      services: [
-        "📦 Sea/air freight booking support", "📑 Bill of lading & IMCO declarations", "🚛 Last-mile delivery coordination", "📞 Customer service for e-commerce", "🏢 Dubai Trade & Calogi platform", "⭐ 16+ years local logistics expertise"
-      ],
+      services: {
+        dispatch: ["📦 Sea/air freight booking support", "📑 Bill of lading & IMCO declarations", "🚛 Last-mile delivery coordination"],
+        logistics: ["📞 Customer service for e-commerce", "🏢 Dubai Trade & Calogi platform", "⭐ 16+ years local logistics expertise"]
+      },
       whyItems: ["UAE port & customs know-how", "English/Arabic basic support", "Cost-effective remote model", "Same-day reporting"]
     }
   };
 
-  // ---------- ABOUT PAGE ----------
+  // About page
   const aboutContent = `
     <section class="hero">
       <div class="container">
@@ -437,7 +471,7 @@
     </section>
   `;
 
-  // ---------- BLOG / CASE STUDY PAGE ----------
+  // Blog page
   const blogContent = `
     <section class="hero">
       <div class="container">
@@ -472,7 +506,7 @@
     </section>
   `;
 
-  // Tools section (same for all countries)
+  // Tools section
   const toolsSection = `
     <section id="tools">
       <div class="container">
@@ -510,7 +544,7 @@
     </section>
   `;
 
-  // Google Form embed HTML (responsive wrapper)
+  // Google Form embed
   const googleFormEmbed = `
     <div class="google-form-container">
       <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSczjHIkAsRFKvX21JoCd6VLciOyLFJiKnZQcU4r6hD6k1w0rg/viewform?embedded=true" width="100%" height="1500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
@@ -524,7 +558,10 @@
     const data = contentMap[currentCountry];
     if (!data) return;
 
-    const servicesHtml = data.services.map(s => `<li style="margin-bottom: 0.5rem;">${s}</li>`).join('');
+    // Build service lists as proper HTML <ul>
+    const dispatchList = data.services.dispatch.map(item => `<li>${item}</li>`).join('');
+    const logisticsList = data.services.logistics.map(item => `<li>${item}</li>`).join('');
+
     const pricingHtml = data.pricingPlans.map(plan => {
       let symbol = '';
       if (data.pricingCurrency === 'AUD') symbol = 'A$';
@@ -540,6 +577,7 @@
         </div>
       `;
     }).join('');
+
     const whyHtml = data.whyItems.map(item => `<div class="why-item"><p>✓ ${item}</p></div>`).join('');
 
     return `
@@ -564,11 +602,11 @@
           <div class="services-grid">
             <div class="service-card">
               <h3>📋 Dispatch & Scheduling</h3>
-              <ul style="list-style: none; padding-left:0;">${servicesHtml.slice(0,3)}</ul>
+              <ul>${dispatchList}</ul>
             </div>
             <div class="service-card">
               <h3>🚚 Logistics & E‑commerce</h3>
-              <ul style="list-style: none; padding-left:0;">${servicesHtml.slice(3)}</ul>
+              <ul>${logisticsList}</ul>
             </div>
             <div class="service-card">
               <h3>📞 Customer Operations</h3>
