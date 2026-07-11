@@ -1,733 +1,2077 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>JSLV | Remote Operations for Trades & Logistics</title>
-  <meta name="description" content="Remote dispatch, scheduling, and logistics support for plumbing, electrical, cleaning, and e-commerce businesses. Serving Australia, UK, USA & UAE. We master Brillion, ServiceM8, Zoho, AI tools and more.">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
 
-    body {
-      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, 'Helvetica Neue', sans-serif;
-      background: #f8fafc;
-      color: #0f172a;
-      line-height: 1.5;
-      scroll-behavior: smooth;
-    }
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    <title>JS Virtual Logistics & Business Solution | Virtual Logistics Coordinator | E-commerce Support</title>
 
-    header {
-      background: white;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      padding: 1rem 0;
-    }
+    <meta name="description"
+        content="JSLV provides Virtual Logistics Coordination, E-commerce Support, Inventory Management, Alibaba Sourcing, Bookkeeping, Zoho Books, Tally, Customer Service, and Business Operations Support worldwide.">
 
-    .header-flex {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
+    <meta name="keywords"
+        content="Virtual Logistics Coordinator, Logistics Support, Ecommerce Support, Inventory Management, Bookkeeping, Zoho Books, Tally, Alibaba Sourcing, Supply Chain, Business Support, Freight Forwarding">
 
-    .logo h1 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #1e3c72, #2b5876);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-    .logo p {
-      font-size: 0.75rem;
-      color: #475569;
-    }
+    <meta name="author" content="JS Virtual Logistics & Business Solution">
 
-    .main-nav {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .nav-link {
-      text-decoration: none;
-      font-weight: 600;
-      color: #1e293b;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .nav-link:hover {
-      color: #0f3b2c;
-    }
-    .country-nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-left: 1rem;
-    }
-    .country-btn {
-      background: transparent;
-      border: none;
-      padding: 0.5rem 1rem;
-      font-weight: 600;
-      font-size: 0.9rem;
-      border-radius: 40px;
-      cursor: pointer;
-      transition: all 0.2s;
-      color: #334155;
-    }
-    .country-btn.active {
-      background: #1e3c72;
-      color: white;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .country-btn:hover:not(.active) {
-      background: #e2e8f0;
-    }
+    <!-- Bootstrap -->
 
-    @media (max-width: 700px) {
-      .header-flex {
-        flex-direction: column;
-        text-align: center;
-      }
-      .main-nav {
-        justify-content: center;
-      }
-      .country-nav {
-        justify-content: center;
-        margin-left: 0;
-      }
-    }
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    .hero {
-      padding: 3rem 0 2rem;
-      background: linear-gradient(135deg, #f1f5f9 0%, #ffffff 100%);
-    }
-    .hero-content {
-      max-width: 800px;
-    }
-    .hero h2 {
-      font-size: 2.2rem;
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-    }
-    .country-badge {
-      display: inline-block;
-      background: #e2e8f0;
-      padding: 0.25rem 1rem;
-      border-radius: 30px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-    .btn-primary {
-      background: #0f3b2c;
-      color: white;
-      padding: 0.8rem 1.8rem;
-      border-radius: 40px;
-      text-decoration: none;
-      font-weight: 700;
-      display: inline-block;
-      transition: 0.2s;
-      border: none;
-      cursor: pointer;
-    }
-    .btn-primary:hover {
-      background: #1e5a3c;
-      transform: translateY(-2px);
-    }
-    .btn-outline {
-      background: transparent;
-      border: 2px solid #0f3b2c;
-      color: #0f3b2c;
-      padding: 0.8rem 1.8rem;
-      border-radius: 40px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-block;
-    }
-    section {
-      padding: 3rem 0;
-      border-bottom: 1px solid #e2e8f0;
-    }
-    .section-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-    .services-grid, .process-grid, .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2rem;
-      margin-top: 1rem;
-    }
-    .service-card, .process-step, .tool-card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 24px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-    .service-card ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    .service-card li {
-      margin-bottom: 0.5rem;
-      padding-left: 1.2rem;
-      position: relative;
-    }
-    .service-card li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      color: #0f3b2c;
-      font-weight: bold;
-    }
-    .tool-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .tool-card ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    .tool-card li {
-      margin-bottom: 0.4rem;
-      padding-left: 1.2rem;
-      position: relative;
-    }
-    .tool-card li::before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      color: #0f3b2c;
-      font-weight: bold;
-    }
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-    }
-    .price-card {
-      background: white;
-      border-radius: 24px;
-      padding: 1.8rem;
-      text-align: center;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.05);
-    }
-    .price {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #0f3b2c;
-      margin: 1rem 0;
-    }
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      text-align: center;
-    }
-    .why-item {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 20px;
-    }
-    .google-form-container {
-      background: white;
-      border-radius: 28px;
-      padding: 1rem;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-      overflow: hidden;
-    }
-    .google-form-container iframe {
-      width: 100%;
-      height: 1500px;
-      border: none;
-      display: block;
-    }
-    @media (max-width: 640px) {
-      .hero h2 { font-size: 1.8rem; }
-      .container { padding: 0 16px; }
-      .google-form-container iframe {
-        height: 1700px;
-      }
-    }
-    footer {
-      background: #0f172a;
-      color: #cbd5e1;
-      padding: 2rem 0;
-      text-align: center;
-    }
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
-    .footer-links a {
-      color: #94a3b8;
-      text-decoration: none;
-      cursor: pointer;
-    }
-    .blog-card {
-      background: white;
-      border-radius: 24px;
-      overflow: hidden;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-    .blog-card h3 {
-      font-size: 1.5rem;
-      padding: 1.5rem 1.5rem 0;
-    }
-    .blog-card .meta {
-      padding: 0 1.5rem;
-      color: #64748b;
-      font-size: 0.85rem;
-    }
-    .blog-card p {
-      padding: 1rem 1.5rem;
-    }
-    .read-more {
-      display: inline-block;
-      margin: 0 1.5rem 1.5rem;
-      color: #0f3b2c;
-      font-weight: 600;
-      text-decoration: none;
-    }
-    .whatsapp-btn {
-      background: #25D366;
-      color: white;
-      border: none;
-      width: 100%;
-      padding: 0.9rem;
-      font-weight: bold;
-      border-radius: 40px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      text-decoration: none;
-    }
-  </style>
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Google Fonts -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+
+    <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
-<header>
-  <div class="container header-flex">
-    <div class="logo">
-      <h1>JSLV</h1>
-      <p>Remote Operations & Dispatch Support</p>
-    </div>
-    <div class="main-nav">
-      <a class="nav-link" data-view="home">🏠 Home</a>
-      <a class="nav-link" data-view="about">👥 About Us</a>
-      <a class="nav-link" data-view="blog">📘 Blog & Case Studies</a>
-      <div class="country-nav" id="countryNav">
-        <button data-country="au" class="country-btn">🇦🇺 Australia</button>
-        <button data-country="uk" class="country-btn">🇬🇧 UK</button>
-        <button data-country="usa" class="country-btn">🇺🇸 USA</button>
-        <button data-country="uae" class="country-btn">🇦🇪 UAE</button>
-      </div>
-    </div>
-  </div>
-</header>
+<!-- ===========================
+     NAVBAR
+============================ -->
 
-<main id="mainContent"></main>
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
 
-<footer>
-  <div class="container">
-    <div class="footer-links">
-      <a data-view="home">Home</a>
-      <a data-view="about">About</a>
-      <a data-view="blog">Blog</a>
-      <a href="mailto:jamshid@jslv.in">jamshid@jslv.in</a>
-      <a href="https://wa.me/918301013842" target="_blank">WhatsApp</a>
-    </div>
-    <p>© 2025 JSLV — JS Virtual Logistics & Business Solutions. India Office: Mattool, Kannur, Kerala</p>
-    <p style="margin-top: 0.5rem; font-size: 0.8rem;">Your Business Friend — Online, Anytime.</p>
-  </div>
+<div class="container">
+
+<a class="navbar-brand fw-bold" href="#">
+
+<img src="assets/images/logo.png" height="70">
+
+</a>
+
+<button class="navbar-toggler" type="button"
+data-bs-toggle="collapse"
+data-bs-target="#navbar">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+<div class="collapse navbar-collapse"
+id="navbar">
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+
+<a class="nav-link" href="#">Home</a>
+
+</li>
+
+<li class="nav-item">
+
+<a class="nav-link" href="#about">About</a>
+
+</li>
+
+<li class="nav-item">
+
+<a class="nav-link" href="#services">Services</a>
+
+</li>
+
+<li class="nav-item">
+
+<a class="nav-link" href="#industries">Industries</a>
+
+</li>
+
+<li class="nav-item">
+
+<a class="nav-link" href="#contact">Contact</a>
+
+</li>
+
+</ul>
+
+<a href="#contact" class="btn btn-warning ms-lg-4">
+
+Get Free Consultation
+
+</a>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- ===========================
+ HERO SECTION
+=========================== -->
+
+<section class="hero">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-lg-6">
+
+<h6 class="text-warning fw-bold mb-3">
+
+WELCOME TO JSLV
+
+</h6>
+
+<h1 class="display-4 fw-bold">
+
+Your Trusted Virtual Logistics &
+<br>
+
+Business Operations Partner
+
+</h1>
+
+<p class="lead mt-4">
+
+Helping businesses worldwide streamline logistics, e-commerce, bookkeeping, inventory management, customer service, and business operations through reliable virtual support.
+
+</p>
+
+<div class="row mt-4">
+
+<div class="col-md-6">
+
+<div class="d-flex">
+
+<i class="fa-solid fa-circle-check text-success me-2 mt-1"></i>
+
+<span>16+ Years Industry Experience</span>
+
+</div>
+
+</div>
+
+<div class="col-md-6">
+
+<div class="d-flex">
+
+<i class="fa-solid fa-circle-check text-success me-2 mt-1"></i>
+
+<span>Global Remote Support</span>
+
+</div>
+
+</div>
+
+<div class="col-md-6 mt-3">
+
+<div class="d-flex">
+
+<i class="fa-solid fa-circle-check text-success me-2 mt-1"></i>
+
+<span>E-commerce Operations</span>
+
+</div>
+
+</div>
+
+<div class="col-md-6 mt-3">
+
+<div class="d-flex">
+
+<i class="fa-solid fa-circle-check text-success me-2 mt-1"></i>
+
+<span>Bookkeeping & Logistics</span>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="mt-5">
+
+<a href="#contact" class="btn btn-warning btn-lg me-3">
+
+Book Consultation
+
+</a>
+
+<a href="#services" class="btn btn-outline-dark btn-lg">
+
+Our Services
+
+</a>
+
+</div>
+
+</div>
+
+<div class="col-lg-6 text-center">
+
+<img src="assets/images/hero.png"
+class="img-fluid">
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ===========================
+TRUST BAR
+=========================== -->
+
+<section class="py-5 bg-light">
+
+<div class="container">
+
+<div class="row text-center">
+
+<div class="col-md-3">
+
+<h2 class="fw-bold text-warning">
+
+16+
+
+</h2>
+
+<p>Years Experience</p>
+
+</div>
+
+<div class="col-md-3">
+
+<h2 class="fw-bold text-warning">
+
+1000+
+
+</h2>
+
+<p>Shipments Coordinated</p>
+
+</div>
+
+<div class="col-md-3">
+
+<h2 class="fw-bold text-warning">
+
+10+
+
+</h2>
+
+<p>Industries Served</p>
+
+</div>
+
+<div class="col-md-3">
+
+<h2 class="fw-bold text-warning">
+
+Worldwide
+
+</h2>
+
+<p>Virtual Support</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- =========================================
+ABOUT JSLV
+========================================== -->
+
+<section id="about" class="py-5">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-lg-6">
+
+<span class="text-warning fw-bold">
+ABOUT JSLV
+</span>
+
+<h2 class="fw-bold display-5 mt-3">
+
+Professional Virtual Business Support
+for Growing Companies
+
+</h2>
+
+<p class="mt-4 text-muted">
+
+<strong>JS Virtual Logistics & Business Solution (JSLV)</strong> is a trusted outsourcing partner helping businesses streamline logistics, supply chain operations, e-commerce management, bookkeeping, customer service, and business administration.
+
+</p>
+
+<p class="text-muted">
+
+Founded by <strong>Jamshid Abdul Jaleel</strong>, a logistics professional with more than <strong>16 years of international experience</strong> across India and the UAE, JSLV combines industry expertise with technology to deliver reliable, affordable, and scalable virtual business solutions.
+
+</p>
+
+<p class="text-muted">
+
+Whether you're a startup, freight forwarder, online seller, importer, exporter, or SME, our mission is to simplify your daily operations so you can focus on growing your business.
+
+</p>
+
+<a href="#services" class="btn btn-warning btn-lg mt-3">
+
+Explore Our Services
+
+</a>
+
+</div>
+
+<div class="col-lg-6">
+
+<img src="assets/images/about.jpg"
+class="img-fluid rounded-4 shadow">
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================
+WHY CHOOSE JSLV
+========================================== -->
+
+<section class="py-5 bg-light">
+
+<div class="container">
+
+<div class="text-center mb-5">
+
+<span class="text-warning fw-bold">
+
+WHY CHOOSE US
+
+</span>
+
+<h2 class="fw-bold display-5">
+
+Your Reliable Virtual Operations Partner
+
+</h2>
+
+<p class="text-muted">
+
+Helping businesses operate smarter while reducing operational costs.
+
+</p>
+
+</div>
+
+<div class="row g-4">
+
+<div class="col-lg-4">
+
+<div class="card border-0 shadow h-100 p-4">
+
+<div class="mb-3">
+
+<i class="fa-solid fa-award fa-3x text-warning"></i>
+
+</div>
+
+<h4>
+
+16+ Years Experience
+
+</h4>
+
+<p class="text-muted">
+
+Extensive expertise in logistics, shipping, warehousing, customer service, inventory management, accounting, and business operations.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-4">
+
+<div class="card border-0 shadow h-100 p-4">
+
+<div class="mb-3">
+
+<i class="fa-solid fa-globe fa-3x text-warning"></i>
+
+</div>
+
+<h4>
+
+Global Virtual Support
+
+</h4>
+
+<p class="text-muted">
+
+Supporting businesses across UAE, GCC, India, Europe, and North America through professional remote operations.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-4">
+
+<div class="card border-0 shadow h-100 p-4">
+
+<div class="mb-3">
+
+<i class="fa-solid fa-money-check-dollar fa-3x text-warning"></i>
+
+</div>
+
+<h4>
+
+Cost Effective
+
+</h4>
+
+<p class="text-muted">
+
+Save on recruitment, office space, employee benefits, and training by outsourcing your operations to experienced professionals.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-4">
+
+<div class="card border-0 shadow h-100 p-4">
+
+<div class="mb-3">
+
+<i class="fa-solid fa-truck-fast fa-3x text-warning"></i>
+
+</div>
+
+<h4>
+
+Logistics Expertise
+
+</h4>
+
+<p class="text-muted">
+
+Import & Export documentation, shipment coordination, freight operations, inventory management, and customer support.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-4">
+
+<div class="card border-0 shadow h-100 p-4">
+
+<div class="mb-3">
+
+<i class="fa-solid fa-cart-shopping fa-3x text-warning"></i>
+
+</div>
+
+<h4>
+
+E-commerce Support
+
+</h4>
+
+<p class="text-muted">
+
+Order management, Shopify, WooCommerce, Amazon, Noon, inventory updates, customer service, and Alibaba sourcing.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-4">
+
+<div class="card border-0 shadow h-100 p-4">
+
+<div class="mb-3">
+
+<i class="fa-solid fa-headset fa-3x text-warning"></i>
+
+</div>
+
+<h4>
+
+Dedicated Support
+
+</h4>
+
+<p class="text-muted">
+
+Professional communication, quick response, and personalized business support tailored to your operational requirements.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================
+MISSION & VISION
+========================================== -->
+
+<section class="py-5">
+
+<div class="container">
+
+<div class="row g-5">
+
+<div class="col-lg-6">
+
+<div class="p-5 rounded-4 shadow">
+
+<i class="fa-solid fa-bullseye fa-3x text-warning mb-4"></i>
+
+<h3>
+
+Our Mission
+
+</h3>
+
+<p class="text-muted">
+
+To empower businesses with reliable, affordable, and professional virtual support services that improve operational efficiency, reduce costs, and enable sustainable business growth.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-6">
+
+<div class="p-5 rounded-4 shadow">
+
+<i class="fa-solid fa-eye fa-3x text-warning mb-4"></i>
+
+<h3>
+
+Our Vision
+
+</h3>
+
+<p class="text-muted">
+
+To become a globally trusted virtual operations partner for logistics companies, e-commerce businesses, SMEs, and entrepreneurs by delivering world-class business support services.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================
+FOUNDER SECTION
+========================================== -->
+
+<section class="py-5 bg-dark text-white">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-lg-4 text-center">
+
+<img src="assets/images/founder.jpg"
+class="img-fluid rounded-circle shadow"
+style="max-width:280px;">
+
+</div>
+
+<div class="col-lg-8">
+
+<span class="text-warning fw-bold">
+
+FOUNDER
+
+</span>
+
+<h2 class="display-6 fw-bold mt-3">
+
+Jamshid Abdul Jaleel
+
+</h2>
+
+<h5 class="text-warning">
+
+Founder & Virtual Operations Consultant
+
+</h5>
+
+<p class="mt-4">
+
+With over <strong>16 years of professional experience</strong> in logistics, supply chain management, customer service, administration, accounting, and business operations, Jamshid has worked with leading organizations across the UAE and India.
+
+</p>
+
+<p>
+
+Today, through <strong>JS Virtual Logistics & Business Solution (JSLV)</strong>, he helps businesses worldwide optimize their logistics, e-commerce operations, bookkeeping, and administrative processes through efficient virtual support.
+
+</p>
+
+<a href="#contact" class="btn btn-warning btn-lg">
+
+Let's Work Together
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- =========================================
+OUR SERVICES
+========================================== -->
+
+<section id="services" class="py-5 bg-light">
+
+<div class="container">
+
+<div class="text-center mb-5">
+
+<span class="text-warning fw-bold">
+OUR SERVICES
+</span>
+
+<h2 class="display-5 fw-bold">
+Professional Virtual Business Solutions
+</h2>
+
+<p class="text-muted">
+From logistics coordination to e-commerce operations, we provide end-to-end virtual business support that helps companies save time, reduce costs, and improve operational efficiency.
+</p>
+
+</div>
+
+<div class="row g-4">
+
+<!-- Logistics -->
+
+<div class="col-lg-4 col-md-6">
+
+<div class="service-card">
+
+<div class="service-icon">
+<i class="fa-solid fa-truck-fast"></i>
+</div>
+
+<h4>Virtual Logistics Coordination</h4>
+
+<p>
+Shipment planning, carrier communication, documentation, shipment tracking, POD follow-up, freight booking, dispatch coordination and customer updates.
+</p>
+
+</div>
+
+</div>
+
+<!-- Ecommerce -->
+
+<div class="col-lg-4 col-md-6">
+
+<div class="service-card">
+
+<div class="service-icon">
+<i class="fa-solid fa-cart-shopping"></i>
+</div>
+
+<h4>E-commerce Support</h4>
+
+<p>
+Shopify, WooCommerce, Amazon & Noon order management, customer support, product listing, returns handling and inventory updates.
+</p>
+
+</div>
+
+</div>
+
+<!-- Inventory -->
+
+<div class="col-lg-4 col-md-6">
+
+<div class="service-card">
+
+<div class="service-icon">
+<i class="fa-solid fa-boxes-stacked"></i>
+</div>
+
+<h4>Inventory Management</h4>
+
+<p>
+Stock monitoring, inventory reports, warehouse coordination, purchase planning, reorder management and stock reconciliation.
+</p>
+
+</div>
+
+</div>
+
+<!-- Alibaba -->
+
+<div class="col-lg-4 col-md-6">
+
+<div class="service-card">
+
+<div class="service-icon">
+<i class="fa-solid fa-globe"></i>
+</div>
+
+<h4>Alibaba Product Sourcing</h4>
+
+<p>
+Supplier verification, quotation comparison, RFQ management, price negotiation, sample coordination and sourcing support.
+</p>
+
+</div>
+
+</div>
+
+<!-- Bookkeeping -->
+
+<div class="col-lg-4 col-md-6">
+
+<div class="service-card">
+
+<div class="service-icon">
+<i class="fa-solid fa-file-invoice-dollar"></i>
+</div>
+
+<h4>Bookkeeping</h4>
+
+<p>
+Zoho Books, Tally ERP, invoice management, bank reconciliation, expense recording and monthly financial reports.
+</p>
+
+</div>
+
+</div>
+
+<!-- Website -->
+
+<div class="col-lg-4 col-md-6">
+
+<div class="service-card">
+
+<div class="service-icon">
+<i class="fa-solid fa-laptop-code"></i>
+</div>
+
+<h4>Business Website</h4>
+
+<p>
+Responsive one-page business websites, landing pages, contact forms and SEO-friendly web presence for startups and SMEs.
+</p>
+
+</div>
+
+</div>
+
+<!-- Customer Service -->
+
+<div class="col-lg-4 col-md-6">
+
+<div class="service-card">
+
+<div class="service-icon">
+<i class="fa-solid fa-headset"></i>
+</div>
+
+<h4>Customer Service</h4>
+
+<p>
+Email support, CRM updates, customer communication, shipment enquiries and after-sales support.
+</p>
+
+</div>
+
+</div>
+
+<!-- Documentation -->
+
+<div class="col-lg-4 col-md-6">
+
+<div class="service-card">
+
+<div class="service-icon">
+<i class="fa-solid fa-file-lines"></i>
+</div>
+
+<h4>Import & Export Documentation</h4>
+
+<p>
+Bill of Lading, Commercial Invoice, Packing List, Customs documentation and shipping documentation support.
+</p>
+
+</div>
+
+</div>
+
+<!-- Zoho -->
+
+<div class="col-lg-4 col-md-6">
+
+<div class="service-card">
+
+<div class="service-icon">
+<i class="fa-solid fa-envelope-circle-check"></i>
+</div>
+
+<h4>Zoho Workplace Setup</h4>
+
+<p>
+Professional business email configuration, domain setup, user management and productivity tools implementation.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================
+INDUSTRIES
+========================================== -->
+
+<section id="industries" class="py-5">
+
+<div class="container">
+
+<div class="text-center mb-5">
+
+<span class="text-warning fw-bold">
+
+INDUSTRIES WE SERVE
+
+</span>
+
+<h2 class="display-5 fw-bold">
+
+Supporting Businesses Across Multiple Industries
+
+</h2>
+
+</div>
+
+<div class="row text-center g-4">
+
+<div class="col-md-3">
+
+<i class="fa-solid fa-ship fa-3x text-warning mb-3"></i>
+
+<h5>Freight Forwarders</h5>
+
+</div>
+
+<div class="col-md-3">
+
+<i class="fa-solid fa-store fa-3x text-warning mb-3"></i>
+
+<h5>E-commerce Stores</h5>
+
+</div>
+
+<div class="col-md-3">
+
+<i class="fa-solid fa-warehouse fa-3x text-warning mb-3"></i>
+
+<h5>Warehouses</h5>
+
+</div>
+
+<div class="col-md-3">
+
+<i class="fa-solid fa-industry fa-3x text-warning mb-3"></i>
+
+<h5>Manufacturers</h5>
+
+</div>
+
+<div class="col-md-3">
+
+<i class="fa-solid fa-building fa-3x text-warning mb-3"></i>
+
+<h5>SMEs</h5>
+
+</div>
+
+<div class="col-md-3">
+
+<i class="fa-solid fa-globe fa-3x text-warning mb-3"></i>
+
+<h5>Importers & Exporters</h5>
+
+</div>
+
+<div class="col-md-3">
+
+<i class="fa-solid fa-broom fa-3x text-warning mb-3"></i>
+
+<h5>Cleaning Companies</h5>
+
+</div>
+
+<div class="col-md-3">
+
+<i class="fa-solid fa-chart-line fa-3x text-warning mb-3"></i>
+
+<h5>Startups</h5>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================
+HOW WE WORK
+========================================== -->
+
+<section class="py-5 bg-light">
+
+<div class="container">
+
+<div class="text-center mb-5">
+
+<span class="text-warning fw-bold">
+OUR PROCESS
+</span>
+
+<h2 class="display-5 fw-bold">
+
+Simple. Professional. Reliable.
+
+</h2>
+
+</div>
+
+<div class="row text-center">
+
+<div class="col-lg-3">
+
+<h1 class="text-warning">01</h1>
+
+<h4>Consult</h4>
+
+<p>Understand your business needs and challenges.</p>
+
+</div>
+
+<div class="col-lg-3">
+
+<h1 class="text-warning">02</h1>
+
+<h4>Plan</h4>
+
+<p>Create a customized virtual support solution.</p>
+
+</div>
+
+<div class="col-lg-3">
+
+<h1 class="text-warning">03</h1>
+
+<h4>Execute</h4>
+
+<p>Handle daily operations professionally and efficiently.</p>
+
+</div>
+
+<div class="col-lg-3">
+
+<h1 class="text-warning">04</h1>
+
+<h4>Grow</h4>
+
+<p>Focus on business growth while we manage operations.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================
+CALL TO ACTION
+========================================== -->
+
+<section class="py-5 text-white" style="background:#0b3b6f;">
+
+<div class="container text-center">
+
+<h2 class="display-5 fw-bold">
+
+Need a Reliable Virtual Operations Partner?
+
+</h2>
+
+<p class="lead mt-3">
+
+Reduce operational costs, improve efficiency, and let experienced professionals manage your logistics, e-commerce, bookkeeping, and business support.
+
+</p>
+
+<a href="#contact" class="btn btn-warning btn-lg mt-4">
+
+Book Your Free Consultation
+
+</a>
+
+</div>
+
+</section>
+<!-- =========================================
+TESTIMONIALS
+========================================== -->
+
+<section id="testimonials" class="py-5">
+
+<div class="container">
+
+<div class="text-center mb-5">
+
+<span class="text-warning fw-bold">
+CLIENT FEEDBACK
+</span>
+
+<h2 class="display-5 fw-bold">
+What Our Clients Say
+</h2>
+
+<p class="text-muted">
+We believe long-term relationships are built on trust, professionalism, and consistent results.
+</p>
+
+</div>
+
+<div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+
+<div class="carousel-inner">
+
+<div class="carousel-item active">
+
+<div class="card border-0 shadow-lg p-5 text-center">
+
+<i class="fa-solid fa-quote-left fa-3x text-warning mb-4"></i>
+
+<p class="lead">
+
+"JSLV has significantly improved our shipment coordination process. Their professionalism and responsiveness have helped us save time and reduce operational delays."
+
+</p>
+
+<h5 class="fw-bold mt-4">
+Operations Manager
+</h5>
+
+<p class="text-muted">
+Freight Forwarding Company | UAE
+</p>
+
+</div>
+
+</div>
+
+<div class="carousel-item">
+
+<div class="card border-0 shadow-lg p-5 text-center">
+
+<i class="fa-solid fa-quote-left fa-3x text-warning mb-4"></i>
+
+<p class="lead">
+
+"The bookkeeping and inventory management support provided by JSLV has allowed us to focus on business growth while maintaining accurate records."
+
+</p>
+
+<h5 class="fw-bold mt-4">
+Business Owner
+</h5>
+
+<p class="text-muted">
+Retail Business | India
+</p>
+
+</div>
+
+</div>
+
+<div class="carousel-item">
+
+<div class="card border-0 shadow-lg p-5 text-center">
+
+<i class="fa-solid fa-quote-left fa-3x text-warning mb-4"></i>
+
+<p class="lead">
+
+"Their logistics knowledge and customer service support have exceeded our expectations. We highly recommend JSLV as a reliable virtual operations partner."
+
+</p>
+
+<h5 class="fw-bold mt-4">
+Managing Director
+</h5>
+
+<p class="text-muted">
+Trading Company | GCC
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<button class="carousel-control-prev"
+type="button"
+data-bs-target="#testimonialCarousel"
+data-bs-slide="prev">
+
+<span class="carousel-control-prev-icon bg-dark rounded-circle p-3"></span>
+
+</button>
+
+<button class="carousel-control-next"
+type="button"
+data-bs-target="#testimonialCarousel"
+data-bs-slide="next">
+
+<span class="carousel-control-next-icon bg-dark rounded-circle p-3"></span>
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================
+FAQ
+========================================== -->
+
+<section id="faq" class="py-5 bg-light">
+
+<div class="container">
+
+<div class="text-center mb-5">
+
+<span class="text-warning fw-bold">
+FREQUENTLY ASKED QUESTIONS
+</span>
+
+<h2 class="display-5 fw-bold">
+Have Questions?
+</h2>
+
+<p class="text-muted">
+Here are some of the most common questions about our services.
+</p>
+
+</div>
+
+<div class="accordion" id="faqAccordion">
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#faq1">
+
+What services does JSLV provide?
+
+</button>
+
+</h2>
+
+<div id="faq1"
+class="accordion-collapse collapse show"
+data-bs-parent="#faqAccordion">
+
+<div class="accordion-body">
+
+We provide Virtual Logistics Coordination, E-commerce Operations Support, Inventory Management, Alibaba Product Sourcing, Bookkeeping using Zoho Books & Tally, Customer Service, Import & Export Documentation, Zoho Workplace Setup, and Responsive Business Website Development.
+
+</div>
+
+</div>
+
+</div>
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button collapsed"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#faq2">
+
+Do you work with international clients?
+
+</button>
+
+</h2>
+
+<div id="faq2"
+class="accordion-collapse collapse"
+data-bs-parent="#faqAccordion">
+
+<div class="accordion-body">
+
+Yes. We provide remote business support to clients across India, the UAE, GCC countries, Europe, North America, and other international markets.
+
+</div>
+
+</div>
+
+</div>
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button collapsed"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#faq3">
+
+Can you support e-commerce businesses?
+
+</button>
+
+</h2>
+
+<div id="faq3"
+class="accordion-collapse collapse"
+data-bs-parent="#faqAccordion">
+
+<div class="accordion-body">
+
+Absolutely. We support Shopify, WooCommerce, Amazon, Noon, inventory management, order processing, customer service, supplier coordination, and Alibaba sourcing.
+
+</div>
+
+</div>
+
+</div>
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button collapsed"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#faq4">
+
+Can you manage our bookkeeping?
+
+</button>
+
+</h2>
+
+<div id="faq4"
+class="accordion-collapse collapse"
+data-bs-parent="#faqAccordion">
+
+<div class="accordion-body">
+
+Yes. We provide bookkeeping using Zoho Books and Tally, including invoice management, expense recording, bank reconciliation, and monthly reports.
+
+</div>
+
+</div>
+
+</div>
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button collapsed"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#faq5">
+
+Why outsource to JSLV?
+
+</button>
+
+</h2>
+
+<div id="faq5"
+class="accordion-collapse collapse"
+data-bs-parent="#faqAccordion">
+
+<div class="accordion-body">
+
+Outsourcing to JSLV gives you access to 16+ years of professional expertise without the cost of hiring full-time staff. We help businesses reduce operational costs, improve productivity, and focus on growth.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- =========================================
+CONTACT SECTION
+========================================== -->
+
+<section id="contact" class="py-5">
+
+<div class="container">
+
+<div class="text-center mb-5">
+
+<span class="text-warning fw-bold">
+CONTACT US
+</span>
+
+<h2 class="display-5 fw-bold">
+
+Let's Discuss Your Business
+
+</h2>
+
+<p class="text-muted">
+
+Need help with Logistics, E-commerce, Bookkeeping or Business Operations?
+
+Let's build your business together.
+
+</p>
+
+</div>
+
+<div class="row g-5">
+
+<!-- ==============================
+LEFT CONTACT DETAILS
+================================ -->
+
+<div class="col-lg-5">
+
+<div class="card border-0 shadow-lg rounded-4 p-4 h-100">
+
+<h3 class="fw-bold mb-4">
+
+Get in Touch
+
+</h3>
+
+<p class="text-muted">
+
+We're always happy to discuss how JSLV can support your business.
+
+</p>
+
+<hr>
+
+<div class="d-flex mb-4">
+
+<div class="me-4">
+
+<i class="fa-solid fa-envelope fa-2x text-warning"></i>
+
+</div>
+
+<div>
+
+<h5>Email</h5>
+
+<p class="mb-0">
+
+<a href="mailto:jamshid@jslv.in">
+
+jamshid@jslv.in
+
+</a>
+
+</p>
+
+</div>
+
+</div>
+
+<div class="d-flex mb-4">
+
+<div class="me-4">
+
+<i class="fa-solid fa-globe fa-2x text-warning"></i>
+
+</div>
+
+<div>
+
+<h5>Website</h5>
+
+<p class="mb-0">
+
+<a href="https://www.jslv.in" target="_blank">
+
+www.jslv.in
+
+</a>
+
+</p>
+
+</div>
+
+</div>
+
+<div class="d-flex mb-4">
+
+<div class="me-4">
+
+<i class="fa-brands fa-whatsapp fa-2x text-success"></i>
+
+</div>
+
+<div>
+
+<h5>WhatsApp</h5>
+
+<p class="mb-0">
+
+<a href="https://wa.me/919XXXXXXXXX" target="_blank">
+
+Chat with Us
+
+</a>
+
+</p>
+
+</div>
+
+</div>
+
+<div class="d-flex mb-4">
+
+<div class="me-4">
+
+<i class="fa-solid fa-location-dot fa-2x text-warning"></i>
+
+</div>
+
+<div>
+
+<h5>Location</h5>
+
+<p class="mb-0">
+
+Kerala, India
+
+Serving Clients Worldwide
+
+</p>
+
+</div>
+
+</div>
+
+<hr>
+
+<h5 class="fw-bold mb-3">
+
+Business Hours
+
+</h5>
+
+<p>
+
+Monday - Saturday
+
+<br>
+
+09:00 AM - 07:00 PM (IST)
+
+</p>
+
+</div>
+
+</div>
+
+<!-- ==============================
+CONTACT FORM
+================================ -->
+
+<div class="col-lg-7">
+
+<div class="card border-0 shadow-lg rounded-4 p-5">
+
+<h3 class="fw-bold mb-4">
+
+Request a Free Consultation
+
+</h3>
+
+<form>
+
+<div class="row">
+
+<div class="col-md-6 mb-4">
+
+<input type="text"
+
+class="form-control form-control-lg"
+
+placeholder="Your Name"
+
+required>
+
+</div>
+
+<div class="col-md-6 mb-4">
+
+<input type="email"
+
+class="form-control form-control-lg"
+
+placeholder="Email Address"
+
+required>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="col-md-6 mb-4">
+
+<input type="text"
+
+class="form-control form-control-lg"
+
+placeholder="Company Name">
+
+</div>
+
+<div class="col-md-6 mb-4">
+
+<input type="tel"
+
+class="form-control form-control-lg"
+
+placeholder="Phone Number">
+
+</div>
+
+</div>
+
+<div class="mb-4">
+
+<select class="form-select form-select-lg">
+
+<option selected>
+
+Select Service
+
+</option>
+
+<option>
+
+Virtual Logistics Coordination
+
+</option>
+
+<option>
+
+E-commerce Support
+
+</option>
+
+<option>
+
+Inventory Management
+
+</option>
+
+<option>
+
+Alibaba Product Sourcing
+
+</option>
+
+<option>
+
+Bookkeeping (Zoho / Tally)
+
+</option>
+
+<option>
+
+Customer Service
+
+</option>
+
+<option>
+
+Import / Export Documentation
+
+</option>
+
+<option>
+
+Zoho Business Email Setup
+
+</option>
+
+<option>
+
+Website Development
+
+</option>
+
+<option>
+
+Other
+
+</option>
+
+</select>
+
+</div>
+
+<div class="mb-4">
+
+<textarea class="form-control"
+
+rows="6"
+
+placeholder="Tell us about your business requirements..."></textarea>
+
+</div>
+
+<button class="btn btn-warning btn-lg w-100">
+
+<i class="fa-solid fa-paper-plane me-2"></i>
+
+Send Enquiry
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =========================================
+GOOGLE MAP
+========================================== -->
+
+<section>
+
+<div class="container-fluid p-0">
+
+<iframe
+
+src="https://www.google.com/maps?q=Kerala,India&output=embed"
+
+width="100%"
+
+height="450"
+
+style="border:0;"
+
+allowfullscreen
+
+loading="lazy">
+
+</iframe>
+
+</div>
+
+</section>
+<!-- =========================================
+FOOTER
+========================================== -->
+
+<footer class="footer bg-dark text-white pt-5 pb-3">
+
+<div class="container">
+
+<div class="row gy-5">
+
+<!-- Company -->
+
+<div class="col-lg-4">
+
+<img src="assets/images/logo.png"
+height="80"
+alt="JSLV Logo">
+
+<p class="mt-4">
+
+JS Virtual Logistics & Business Solution (JSLV) provides professional virtual logistics coordination, e-commerce support, bookkeeping, inventory management, customer service, Alibaba sourcing, and business operations support for startups, SMEs, and global businesses.
+
+</p>
+
+<div class="mt-4">
+
+<a href="#" class="me-3 text-white fs-4">
+
+<i class="fab fa-facebook"></i>
+
+</a>
+
+<a href="#" class="me-3 text-white fs-4">
+
+<i class="fab fa-linkedin"></i>
+
+</a>
+
+<a href="#" class="me-3 text-white fs-4">
+
+<i class="fab fa-instagram"></i>
+
+</a>
+
+<a href="#" class="text-white fs-4">
+
+<i class="fab fa-youtube"></i>
+
+</a>
+
+</div>
+
+</div>
+
+<!-- Quick Links -->
+
+<div class="col-lg-2">
+
+<h5 class="mb-4">
+
+Quick Links
+
+</h5>
+
+<ul class="list-unstyled">
+
+<li class="mb-2">
+
+<a href="#" class="text-white text-decoration-none">
+
+Home
+
+</a>
+
+</li>
+
+<li class="mb-2">
+
+<a href="#about" class="text-white text-decoration-none">
+
+About
+
+</a>
+
+</li>
+
+<li class="mb-2">
+
+<a href="#services" class="text-white text-decoration-none">
+
+Services
+
+</a>
+
+</li>
+
+<li class="mb-2">
+
+<a href="#industries" class="text-white text-decoration-none">
+
+Industries
+
+</a>
+
+</li>
+
+<li class="mb-2">
+
+<a href="#contact" class="text-white text-decoration-none">
+
+Contact
+
+</a>
+
+</li>
+
+</ul>
+
+</div>
+
+<!-- Services -->
+
+<div class="col-lg-3">
+
+<h5 class="mb-4">
+
+Our Services
+
+</h5>
+
+<ul class="list-unstyled">
+
+<li class="mb-2">
+
+Virtual Logistics Coordination
+
+</li>
+
+<li class="mb-2">
+
+E-commerce Operations
+
+</li>
+
+<li class="mb-2">
+
+Inventory Management
+
+</li>
+
+<li class="mb-2">
+
+Alibaba Product Sourcing
+
+</li>
+
+<li class="mb-2">
+
+Bookkeeping
+
+</li>
+
+<li class="mb-2">
+
+Zoho Business Email Setup
+
+</li>
+
+<li class="mb-2">
+
+Business Website Development
+
+</li>
+
+</ul>
+
+</div>
+
+<!-- Contact -->
+
+<div class="col-lg-3">
+
+<h5 class="mb-4">
+
+Contact
+
+</h5>
+
+<p>
+
+<i class="fas fa-envelope text-warning me-2"></i>
+
+jamshid@jslv.in
+
+</p>
+
+<p>
+
+<i class="fas fa-globe text-warning me-2"></i>
+
+www.jslv.in
+
+</p>
+
+<p>
+
+<i class="fas fa-location-dot text-warning me-2"></i>
+
+Kerala, India
+
+</p>
+
+<p>
+
+<i class="fab fa-whatsapp text-success me-2"></i>
+
+Available on WhatsApp
+
+</p>
+
+<a href="#contact"
+class="btn btn-warning mt-3">
+
+Book Free Consultation
+
+</a>
+
+</div>
+
+</div>
+
+<hr class="my-4">
+
+<div class="row">
+
+<div class="col-lg-6">
+
+<p class="mb-0">
+
+© 2026 JS Virtual Logistics & Business Solution (JSLV). All Rights Reserved.
+
+</p>
+
+</div>
+
+<div class="col-lg-6 text-lg-end">
+
+<p class="mb-0">
+
+Designed with ❤️ by JSLV
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
 </footer>
 
+<!-- =========================================
+WHATSAPP FLOATING BUTTON
+========================================== -->
+
+<a href="https://wa.me/918301013843"
+target="_blank"
+class="whatsapp-float">
+
+<i class="fab fa-whatsapp"></i>
+
+</a>
+
+<!-- =========================================
+BACK TO TOP
+========================================== -->
+
+<button id="backToTop"
+class="back-to-top">
+
+<i class="fas fa-arrow-up"></i>
+
+</button>
+
+<!-- =========================================
+BOOTSTRAP
+========================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- AOS Animation -->
+
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
 <script>
-  // Country-specific content
-  const contentMap = {
-    au: {
-      title: "Remote Dispatch for Australian Trades & Logistics",
-      subtitle: "Supporting plumbers, electricians, cleaners & e-commerce across Sydney, Melbourne, Brisbane & Perth.",
-      ctaText: "Start Free Trial Week (AUD)",
-      heroDesc: "We handle customer calls, job scheduling, technician coordination, and follow-ups – so you can focus on the job. Pay from $15 AUD/hour. No lock-in contracts.",
-      pricingCurrency: "AUD",
-      pricingPlans: [
-        { name: "Starter", hours: "20h/month", price: "200", desc: "Light call handling & scheduling" },
-        { name: "Growth", hours: "80h/month", price: "750", desc: "Ideal for 2-3 techs" },
-        { name: "Scale", hours: "160h/month", price: "1,000", desc: "Full-time dispatcher" }
-      ],
-      services: {
-        dispatch: ["📞 Customer enquiry & call management", "📅 Job booking & real-time scheduling", "👨‍🔧 Technician dispatch & route optimization"],
-        logistics: ["💬 WhatsApp & phone support (AEST hours)", "⭐ Follow-up & review collection", "🚚 E-commerce & freight tracking support"]
-      },
-      whyItems: ["Works while you sleep (your timezone)", "16+ yrs logistics experience", "Lower cost than local hire", "ServiceM8, Jobber, Zoho ready"]
-    },
-    uk: {
-      title: "Remote Operations for UK Trades & Logistics",
-      subtitle: "Supporting plumbing, electrical, cleaning & 3PLs across London, Manchester, Birmingham & more.",
-      ctaText: "Claim Free Trial (GBP)",
-      heroDesc: "We act as your remote dispatch team – handling customer calls, engineer scheduling, shipment tracking, and urgent escalations. From £10/hour.",
-      pricingCurrency: "GBP",
-      pricingPlans: [
-        { name: "Starter", hours: "20h/month", price: "120", desc: "Light support" },
-        { name: "Growth", hours: "80h/month", price: "400", desc: "3-5 engineers" },
-        { name: "Scale", hours: "160h/month", price: "650", desc: "Dedicated coordinator" }
-      ],
-      services: {
-        dispatch: ["📞 Live call answering during UK business hours", "📅 Engineer job scheduling & rescheduling", "🚚 Last-mile delivery coordination"],
-        logistics: ["📦 Import/export documentation support", "💬 Multi-channel support", "⭐ Customer feedback & retention"]
-      },
-      whyItems: ["Aligns with GMT/BST", "Reduce no-show rates", "Transparent billing", "Fast onboarding 48h"]
-    },
-    usa: {
-      title: "US-Based Hours Remote Dispatch Support",
-      subtitle: "For electrical, plumbing, cleaning & e-commerce logistics across EST, CST, MST, PST.",
-      ctaText: "Start Free Trial (USD)",
-      heroDesc: "Pay only for the hours you use – from $105 USD/hour. We work overnight IST to match your timezone.",
-      pricingCurrency: "USD",
-      pricingPlans: [
-        { name: "Starter", hours: "20h/month", price: "200", desc: "Entry-level" },
-        { name: "Growth", hours: "80h/month", price: "500", desc: "Popular for small fleets" },
-        { name: "Scale", hours: "160h/month", price: "900", desc: "Full remote operator" }
-      ],
-      services: {
-        dispatch: ["📞 Inbound & outbound customer calls", "📦 Freight & load board coordination (TruckSmarter)", "🗓️ Appointment scheduling & route planning"],
-        logistics: ["📄 Shipping document preparation", "🤝 Driver communication & ETA updates", "📊 Daily reporting"]
-      },
-      whyItems: ["Follows all US time zones", "Specialized in logistics & trades", "ERP & WMS friendly", "No long-term contracts"]
-    },
-    uae: {
-      title: "Dubai & UAE Remote Operations Support",
-      subtitle: "Logistics coordination, dispatch, and customer service for UAE-based companies.",
-      ctaText: "طلب تجربة مجانية (AED)",
-      heroDesc: "Based in India with deep UAE experience (ex-UASC). Sea/air freight, shipping docs, customs coordination.",
-      pricingCurrency: "AED",
-      pricingPlans: [
-        { name: "Starter", hours: "20h/month", price: "750", desc: "Light coordination" },
-        { name: "Growth", hours: "80h/month", price: "1100", desc: "Best for freight forwarders" },
-        { name: "Scale ", hours: "208h/month", price: "2000", desc: "Dedicated operations team" }
-      ],
-      services: {
-        dispatch: ["📦 Sea/air freight booking support", "📑 Bill of lading & IMCO declarations", "🚛 Last-mile delivery coordination"],
-        logistics: ["📞 Customer service for e-commerce", "🏢 Dubai Trade & Calogi platform", "⭐ 16+ years local logistics expertise"]
-      },
-      whyItems: ["UAE port & customs know-how", "English/Arabic basic support", "Cost-effective remote model", "Same-day reporting"]
-    }
-  };
 
-  // About page
-  const aboutContent = `
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content">
-          <div class="country-badge">📍 About JS Virtual Logistics & Business Solutions</div>
-          <h2>Your Remote Operations Partner Since 2024</h2>
-          <p>We help small and medium businesses in Australia, UK, USA, and UAE streamline their dispatch, logistics, and customer coordination – so you can focus on growth.</p>
-        </div>
-      </div>
-    </section>
-    <section>
-      <div class="container">
-        <h2 class="section-title">Who We Are</h2>
-        <p style="max-width: 800px; margin: 0 auto 2rem; text-align: center;">JSLV was founded by Jamshid Abdul Jaleel, a logistics and operations specialist with over 16 years of hands-on experience at United Arab Shipping Company and other global firms. Based in Kerala, India, we provide dedicated remote teams that work inside your business hours – no timezone friction, no hidden costs.</p>
-        <div class="why-grid">
-          <div class="why-item">🎯 <strong>Mission</strong><br>Empower trades and logistics businesses with affordable, reliable operational support.</div>
-          <div class="why-item">🧠 <strong>Expertise</strong><br>Sea/air freight, customs docs, dispatch scheduling, CRM & ERP tools.</div>
-          <div class="why-item">🌏 <strong>Global Reach</strong><br>Clients in 4 countries, but we focus on local timezones and practices.</div>
-        </div>
-        <div style="margin-top: 2rem; text-align: center;">
-          <img src="https://placehold.co/400x200?text=Jamshid+Leading+Team" alt="JSLV Team" style="max-width:100%; border-radius: 24px; box-shadow: 0 8px 20px rgba(0,0,0,0.1);">
-          <p style="margin-top: 1rem;"><strong>Jamshid Abdul Jaleel</strong> – Operations Lead (16+ yrs logistics, ex-UASC)</p>
-        </div>
-      </div>
-    </section>
-  `;
+AOS.init({
 
-  // Blog page
-  const blogContent = `
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content">
-          <div class="country-badge">📘 Case Studies & Industry Insights</div>
-          <h2>Real Results from Real Clients</h2>
-          <p>See how JSLV helped businesses reduce costs, save time, and improve customer satisfaction.</p>
-        </div>
-      </div>
-    </section>
-    <section>
-      <div class="container">
-        <div class="blog-card">
-          <h3>Case Study: How a Sydney Plumbing Company Saved 20 Hours/Week with Remote Dispatch</h3>
-          <div class="meta">📅 March 2025 | ⏱ 4 min read</div>
-          <p>A 5‑technician plumbing business in Sydney was struggling with missed calls, double‑bookings, and late arrivals. JSLV implemented a dedicated remote dispatcher who answered all incoming calls (during AEST), scheduled jobs using ServiceM8, and sent appointment reminders via WhatsApp. Within 3 weeks, no‑show rates dropped by 70%, the owner saved 20 hours of admin work, and customer reviews increased by 40%.</p>
-          <a href="https://wa.me/918301013842?text=I%20read%20your%20Sydney%20plumbing%20case%20study%20and%20want%20similar%20support" target="_blank" class="read-more">→ Get the same results – Chat on WhatsApp</a>
-        </div>
-        <div class="blog-card">
-          <h3>Case Study: E‑commerce Logistics for a UK Fashion Brand</h3>
-          <div class="meta">📅 February 2025 | ⏱ 3 min read</div>
-          <p>A fast‑growing online fashion retailer in Manchester faced delays in shipment tracking, customs documentation errors for EU returns, and slow customer responses. JSLV took over all shipment follow‑ups, EDI manifest preparation, and customer support via email and web chat. Result: 50% faster resolution of delivery inquiries, zero demurrage charges, and a 25% increase in repeat purchases due to better post‑sale communication.</p>
-          <a href="https://wa.me/918301013842?text=I%20read%20the%20UK%20fashion%20case%20study%20–%20let's%20talk" target="_blank" class="read-more">→ Discuss your logistics needs on WhatsApp</a>
-        </div>
-        <div class="blog-card">
-          <h3>Case Study: Truck Dispatch for a Texas Logistics Company</h3>
-          <div class="meta">📅 January 2025 | ⏱ 3 min read</div>
-          <p>A small trucking company with 8 power units struggled with driver check‑calls and manual load tracking. JSLV provided a remote dispatcher who used TruckSmarter load board, coordinated with brokers, and sent daily driver updates. The client reduced admin hours by 15 per week, improved on‑time pickup rates by 30%, and scaled their fleet without hiring in‑house staff.</p>
-          <a href="https://wa.me/918301013842?text=Interested%20in%20truck%20dispatch%20like%20the%20Texas%20case%20study" target="_blank" class="read-more">→ Learn how we can help your fleet</a>
-        </div>
-      </div>
-    </section>
-  `;
+duration:1000,
 
-  // Tools section
-  const toolsSection = `
-    <section id="tools">
-      <div class="container">
-        <h2 class="section-title">🔧 Tools We Master</h2>
-        <div class="tools-grid">
-          <div class="tool-card">
-            <h3>📊 Business & Operations</h3>
-            <ul>
-              <li>Brillion CRM</li>
-              <li>ServiceM8</li>
-              <li>Zoho Books</li>
-              <li>Advanced Excel & Google Sheets</li>
-              <li>Google Workspace & Outlook</li>
-            </ul>
-          </div>
-          <div class="tool-card">
-            <h3>💬 Communication & Support</h3>
-            <ul>
-              <li>Business WhatsApp</li>
-              <li>Facebook Meta Business Suite</li>
-              <li>Multi‑channel email/chat support</li>
-            </ul>
-          </div>
-          <div class="tool-card">
-            <h3>🤖 AI & Productivity</h3>
-            <ul>
-              <li>ChatGPT (workflow automation)</li>
-              <li>DeepSeek (research & analysis)</li>
-              <li>Canva (design & proposals)</li>
-            </ul>
-          </div>
-        </div>
-        <p style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem;">We integrate with your existing stack – no learning curve, immediate impact.</p>
-      </div>
-    </section>
-  `;
+once:true
 
-  // Google Form embed
-  const googleFormEmbed = `
-    <div class="google-form-container">
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSczjHIkAsRFKvX21JoCd6VLciOyLFJiKnZQcU4r6hD6k1w0rg/viewform?embedded=true" width="100%" height="1500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-    </div>
-  `;
+});
 
-  let currentView = 'home';
-  let currentCountry = 'au';
-
-  function renderHome() {
-    const data = contentMap[currentCountry];
-    if (!data) return;
-
-    // Build service lists as proper HTML <ul>
-    const dispatchList = data.services.dispatch.map(item => `<li>${item}</li>`).join('');
-    const logisticsList = data.services.logistics.map(item => `<li>${item}</li>`).join('');
-
-    const pricingHtml = data.pricingPlans.map(plan => {
-      let symbol = '';
-      if (data.pricingCurrency === 'AUD') symbol = 'A$';
-      else if (data.pricingCurrency === 'GBP') symbol = '£';
-      else if (data.pricingCurrency === 'USD') symbol = '$';
-      else symbol = 'AED ';
-      return `
-        <div class="price-card">
-          <h4>${plan.name}</h4>
-          <p>${plan.hours}</p>
-          <div class="price">${symbol}${plan.price}<small> /month</small></div>
-          <p>${plan.desc}</p>
-        </div>
-      `;
-    }).join('');
-
-    const whyHtml = data.whyItems.map(item => `<div class="why-item"><p>✓ ${item}</p></div>`).join('');
-
-    return `
-      <section class="hero">
-        <div class="container">
-          <div class="hero-content">
-            <div class="country-badge">📍 Serving ${currentCountry.toUpperCase()} • Remote from India</div>
-            <h2>${data.title}</h2>
-            <p>${data.subtitle}</p>
-            <p>${data.heroDesc}</p>
-            <div class="cta-group" style="display: flex; gap: 1rem; flex-wrap: wrap;">
-              <a href="#contact" class="btn-primary" id="freeTrialBtn">${data.ctaText} →</a>
-              <a href="#contact" class="btn-outline" id="quoteBtn">Get Quote</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="services">
-        <div class="container">
-          <h2 class="section-title">Our Services for ${currentCountry.toUpperCase()}</h2>
-          <div class="services-grid">
-            <div class="service-card">
-              <h3>📋 Dispatch & Scheduling</h3>
-              <ul>${dispatchList}</ul>
-            </div>
-            <div class="service-card">
-              <h3>🚚 Logistics & E‑commerce</h3>
-              <ul>${logisticsList}</ul>
-            </div>
-            <div class="service-card">
-              <h3>📞 Customer Operations</h3>
-              <p>24h follow-up, review collection, escalation handling, live chat during your business hours.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="pricing">
-        <div class="container">
-          <h2 class="section-title">Simple, Transparent Pricing (${data.pricingCurrency})</h2>
-          <div class="pricing-grid">${pricingHtml}</div>
-          <p style="text-align:center; margin-top:1.5rem;">✅ No setup fee | Cancel anytime | Free 1-week trial</p>
-        </div>
-      </section>
-
-      ${toolsSection}
-
-      <section id="why-us">
-        <div class="container">
-          <h2 class="section-title">Why Choose JSLV for ${currentCountry.toUpperCase()}</h2>
-          <div class="why-grid">
-            ${whyHtml}
-            <div class="why-item"><p>✓ 16+ years operations experience (UASC, Dubai)</p></div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact">
-        <div class="container">
-          <h2 class="section-title">Start Your Free Trial Today</h2>
-          ${googleFormEmbed}
-          <div style="text-align: center; margin-top: 1.5rem;">
-            <a href="https://wa.me/918301013842?text=Hi%20JSLV,%20I'd%20like%20to%20discuss%20remote%20support%20for%20${currentCountry.toUpperCase()}" target="_blank" class="whatsapp-btn" style="display: inline-flex; width: auto; padding: 0.8rem 2rem;">📱 Or chat on WhatsApp</a>
-          </div>
-        </div>
-      </section>
-    `;
-  }
-
-  function renderAbout() {
-    return aboutContent;
-  }
-
-  function renderBlog() {
-    return blogContent;
-  }
-
-  function render() {
-    const main = document.getElementById('mainContent');
-    if (currentView === 'home') {
-      main.innerHTML = renderHome();
-      const freeTrialBtn = document.getElementById('freeTrialBtn');
-      const quoteBtn = document.getElementById('quoteBtn');
-      if (freeTrialBtn) {
-        freeTrialBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-        });
-      }
-      if (quoteBtn) {
-        quoteBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-        });
-      }
-    } else if (currentView === 'about') {
-      main.innerHTML = renderAbout();
-    } else if (currentView === 'blog') {
-      main.innerHTML = renderBlog();
-    }
-    document.querySelectorAll('.nav-link').forEach(link => {
-      if (link.getAttribute('data-view') === currentView) link.style.color = '#0f3b2c';
-      else link.style.color = '#1e293b';
-    });
-  }
-
-  function setView(view, country = null) {
-    currentView = view;
-    if (country) currentCountry = country;
-    if (view === 'home') {
-      document.getElementById('countryNav').style.display = 'flex';
-      document.querySelectorAll('.country-btn').forEach(btn => {
-        if (btn.dataset.country === currentCountry) btn.classList.add('active');
-        else btn.classList.remove('active');
-      });
-    } else {
-      document.getElementById('countryNav').style.display = 'none';
-    }
-    render();
-  }
-
-  // Event listeners
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const view = link.getAttribute('data-view');
-      if (view === 'home') setView('home', currentCountry);
-      else setView(view, null);
-    });
-  });
-
-  document.querySelectorAll('.country-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const country = btn.dataset.country;
-      currentCountry = country;
-      setView('home', country);
-    });
-  });
-
-  document.querySelectorAll('.footer-links a').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const view = link.getAttribute('data-view');
-      if (view === 'home') setView('home', currentCountry);
-      else if (view === 'about') setView('about', null);
-      else if (view === 'blog') setView('blog', null);
-    });
-  });
-
-  // Initial load
-  setView('home', 'au');
 </script>
+
+<!-- CounterUp -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+
+<!-- Custom JS -->
+
+<script src="script.js"></script>
+
 </body>
+
 </html>
